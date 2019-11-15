@@ -1,29 +1,38 @@
 {
-  "name": "qubitsdk",
-  "version": "0.0.1",
-  "private": true,
+  "name": "qubit-sdk-react-native",
+  "version": "1.0.0",
+  "description": "React Native bridge for using native Qubit SDK libraries on iOS and Android",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint ."
+    "prepublishOnly": "yarn run build-all",
+    "build": "tsc",
+    "build-all": "rm -rf dist && yarn run build",
+    "precommit": "yarn run build"
   },
-  "dependencies": {
-    "react": "16.9.0",
-    "react-native": "0.61.4"
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/miquido/qubit-react-native-sdk.git"
   },
+  "keywords": [
+    "react",
+    "native",
+    "qubit",
+    "sdk",
+    "analytics",
+    "tracking",
+    "native",
+    "bridge",
+    "events",
+    "screen",
+    "hits",
+    "react-native",
+    "ios",
+    "android"
+  ],
   "devDependencies": {
-    "@babel/core": "^7.7.2",
-    "@babel/runtime": "^7.7.2",
-    "@react-native-community/eslint-config": "^0.0.5",
-    "babel-jest": "^24.9.0",
-    "eslint": "^6.6.0",
-    "jest": "^24.9.0",
-    "metro-react-native-babel-preset": "^0.57.0",
-    "react-test-renderer": "16.9.0"
-  },
-  "jest": {
-    "preset": "react-native"
+    "@types/react": "16.3.1",
+    "@types/react-native": "0.55.4",
+    "typescript": "^2.5.2"
   }
 }
