@@ -1,9 +1,11 @@
-import { Alert, NativeModules } from 'react-native';
+// TODO: Lines below to be used
+// import { Alert, NativeModules } from 'react-native';
+// const { QubitSDK } = NativeModules;
 
-const { QubitSDK } = NativeModules;
+import { Alert } from 'react-native';
 
 export const testMethod = () => new Promise<Boolean>((resolve) => {
-    // Method for test reasons only
+    // TODO: Method for test reasons only
     Alert.alert(
         'yeah, it works',
         'test message',
@@ -12,4 +14,6 @@ export const testMethod = () => new Promise<Boolean>((resolve) => {
     resolve(true)
 });
 
-export default QubitSDK;
+export default {
+    testMethod
+};

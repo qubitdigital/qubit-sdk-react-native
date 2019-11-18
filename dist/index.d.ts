@@ -1,3 +1,5 @@
-declare const QubitSDK: any;
 export declare const testMethod: () => Promise<Boolean>;
-export default QubitSDK;
+declare const _default: {
+    testMethod: () => Promise<Boolean>;
+};
+export default _default;
