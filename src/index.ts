@@ -1,8 +1,4 @@
-// TODO: Lines below to be used
-// import { Alert, NativeModules } from 'react-native';
-// const { QubitSDK } = NativeModules;
-
-import { Alert } from 'react-native';
+import { Alert, NativeModules } from 'react-native';
 
 export const testMethod = () => new Promise<Boolean>((resolve) => {
     // TODO: Method for test reasons only
@@ -14,6 +10,11 @@ export const testMethod = () => new Promise<Boolean>((resolve) => {
     resolve(true)
 });
 
+export const init = (trackingId: String, logLevel: String) => {
+    console.debug("QubitSDK: Init");
+    NativeModules.QubitSDK.init(trackingId, logLevel)
+};
+
 export default {
-    testMethod
+    testMethod, init
 };

@@ -1,4 +1,4 @@
-package com.qubitsdk;
+package com.qubit.reactnative.sdk.example;
 
 import com.facebook.react.ReactActivity;
 

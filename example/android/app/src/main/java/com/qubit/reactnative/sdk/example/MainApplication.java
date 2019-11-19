@@ -1,4 +1,4 @@
-package com.qubitsdkreactnative;
+package com.qubit.reactnative.sdk.example;
 
 import android.app.Application;
 import android.content.Context;
