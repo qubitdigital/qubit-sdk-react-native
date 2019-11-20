@@ -4,7 +4,7 @@
         User 
           |
           v
-    Qubit ReactNative SDK API 
+    Qubit SDK ReactNative  
           |
           v
      Javascript ReactNative Bridge API 
@@ -29,7 +29,8 @@ native modules for both platforms: Android and iOS.
 - getExperiences
 - experienceShown
 
-## init(trackingId, logLevel)
+-------------------------------------------------------
+## **init(trackingId, logLevel)**
 
 ### Description
 Initialization of SDK. It should be called as early as possible after 
@@ -37,15 +38,15 @@ application start, only once and before any other interaction with the API.
 
 ### Parameters
 - trackingId 
-  - Type: String 
-  - Constraints: Not null, not empty 
-  - Description: Tracking id (identifier of application/company etc.)
+    - Type: String 
+    - Constraints: Not null, not empty 
+    - Description: Tracking id (identifier of application/company etc.)
 - logLevel 
-  - Type: String 
-  - Constraints: Not null. 
-    One of values: SILENT, ERROR, WARN, INFO, DEBUG, VERBOSE. 
-    Any other value causes setting default value, which is WARN.
-  - Level of logs produced by native SDK.
+    - Type: String 
+    - Constraints: Not null. 
+      One of values: SILENT, ERROR, WARN, INFO, DEBUG, VERBOSE. 
+      Any other value causes setting default value, which is WARN.
+    - Level of logs produced by native SDK.
 
 ### Result
 None
@@ -54,21 +55,22 @@ None
 
     QubitSDK.init("miquido", "DEBUG");
 
+-------------------------------------------------------
 
-## sendEvent(eventType, eventBody)
+## **sendEvent(eventType, eventBody)**
 
 ### Description
 Sends event to the server.
 
 ### Parameters
 - eventType
-  - Type: String
-  - Constraints: Not null
-  - Description: Type of event. eg. ecView
+    - Type: String
+    - Constraints: Not null
+    - Description: Type of event. eg. ecView
 - eventBody
-  - Type: Javascript map of any structure
-  - Type: Not null
-  - Description: Event body
+    - Type: Javascript map of any structure
+    - Type: Not null
+    - Description: Event body
 
 ### Result
 None
@@ -80,17 +82,18 @@ None
     QubitSDK.sendEvent("ecView", { "type": "button", "value": "click" });  
 
 
+-------------------------------------------------------
 
-## enableTracker(enable)
+## **enableTracker(enable)**
 
 ### Description
 Enables or disables receiving events.
 
 ### Parameters
 - enable
-  - Type: Boolean
-  - Constraints: Not null
-  - Description: true for enabling, false for disabling
+    - Type: Boolean
+    - Constraints: Not null
+    - Description: true for enabling, false for disabling
 
 ### Result
 None
@@ -102,8 +105,9 @@ None
     QubitSDK.enableTracker(false);  
 
 
+-------------------------------------------------------
 
-## getTrackingId()
+## **getTrackingId()**
 
 ### Description
 Returns trackingId. Debug purposes.
@@ -124,8 +128,9 @@ Promise with String trackingId.
     }  
 
 
+-------------------------------------------------------
 
-## getDeviceId()
+## **getDeviceId()**
 
 ### Description
 Returns device id established by the SDK. Debug purposes.
@@ -146,8 +151,9 @@ Promise with String deviceId.
     }  
 
 
+-------------------------------------------------------
 
-## getLookupData()
+## **getLookupData()**
 
 ### Description
 Returns current Lookup Data. Debug purposes. 
@@ -190,41 +196,42 @@ Promise with Javascript map:
     }  
 
 
+-------------------------------------------------------
 
-## getExperiences(experienceIds, isVariationSet, variation, isPreviewSet, preview, isIgnoreSegmentsSet, ignoreSegments)
+## **getExperiences**(experienceIds, isVariationSet, variation, isPreviewSet, preview, isIgnoreSegmentsSet, ignoreSegments)
 
 ### Description
 Returns list of Experiences.
 
 ### Parameters
 - experienceIds
-  - Type: Array of Integers
-  - Constraints: Not null.
-  - Description: List of experiences ids. When array is empty, returns all experiences.
+    - Type: Array of Integers
+    - Constraints: Not null.
+    - Description: List of experiences ids. When array is empty, returns all experiences.
 - isVariationSet
-  - Type: Boolean
-  - Constraints: Not null.
-  - Description: Is `variation` parameter meaningful?
+    - Type: Boolean
+    - Constraints: Not null.
+    - Description: Is `variation` parameter meaningful?
 - variation
-  - Type: Integer
-  - Constraints: Not null.
-  - Description: Meaningful only when `isVariationSet` is true?
+    - Type: Integer
+    - Constraints: Not null.
+    - Description: Meaningful only when `isVariationSet` is true?
 - isPreviewSet
-  - Type: Boolean
-  - Constraints: Not null.
-  - Description: Is `preview` parameter meaningful?
+    - Type: Boolean
+    - Constraints: Not null.
+    - Description: Is `preview` parameter meaningful?
 - preview
-  - Type: Boolean
-  - Constraints: Not null.
-  - Description: Meaningful only when `isPreviewSet` is true?
+    - Type: Boolean
+    - Constraints: Not null.
+    - Description: Meaningful only when `isPreviewSet` is true?
 - isIgnoreSegmentsSet
-  - Type: Boolean
-  - Constraints: Not null.
-  - Description: Is `ignoreSegments` parameter meaningful?
+    - Type: Boolean
+    - Constraints: Not null.
+    - Description: Is `ignoreSegments` parameter meaningful?
 - ignoreSegments
-  - Type: Boolean
-  - Constraints: Not null.
-  - Description: Meaningful only when `isIgnoreSegmentsSet` is true?
+    - Type: Boolean
+    - Constraints: Not null.
+    - Description: Meaningful only when `isIgnoreSegmentsSet` is true?
 
 ### Result
 Promise with an array of Experiences objects. Example:
@@ -264,17 +271,18 @@ Promise with an array of Experiences objects. Example:
     }  
 
 
+-------------------------------------------------------
 
-## experienceShown(callback)
+## **experienceShown**(callback)
 
 ### Description
 Sends to server information, that experience was shown
 
 ### Parameters
 - callback
-  - Type: String
-  - Constraints: Not null.
-  - Description: Value of callback property in the result of getExperiences function.
+    - Type: String
+    - Constraints: Not null.
+    - Description: Value of callback property in the result of getExperiences function.
 
 ### Result
 None
