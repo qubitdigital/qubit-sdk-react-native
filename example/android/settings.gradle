@@ -1,7 +1,5 @@
 rootProject.name = 'qubitsdk-example'
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 
-include ':qubit-sdk-react-native'
-project(':qubit-sdk-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/qubit-sdk-react-native/android')
 
 include ':app'

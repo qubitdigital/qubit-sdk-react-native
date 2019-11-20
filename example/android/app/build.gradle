@@ -180,7 +180,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(':qubit-sdk-react-native')
     implementation "com.facebook.react:react-native:+"
 
     if (enableHermes) {
