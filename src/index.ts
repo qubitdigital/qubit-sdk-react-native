@@ -3,7 +3,7 @@ import { NativeModules, Platform } from 'react-native';
 /**
  * Initialization of SDK. It should be called as early as possible after application start, only once and before any other interaction with the API.
  * @param {string} trackingId Tracking id (identifier of application/company etc.)
- * @param {('SILENT', 'ERROR', 'WARN', 'INFO', 'DEBUG', 'VERBOSE')} logLevel Level of logs produced by native SDK.
+ * @param {'SILENT'|'ERROR'|'WARN'|'INFO'|'DEBUG'|'VERBOSE'} [logLevel='VERBOSE'] Level of logs produced by native SDK.
  * @returns {void} None
  * @example
  *
@@ -51,11 +51,11 @@ export const enableTracker = (
 
 /**
  * Returns trackingId. Debug purposes.
- * @returns {promise<string>} Promise with String trackingId.
+ * @returns {Promise<string>} Promise with String trackingId.
  * @example
  *
- * async function asyncFunction() {
- *  var trackingId = await QubitSDK.getTrackingId();
+ * async () => {
+ *  const trackingId = await QubitSDK.getTrackingId();
  *  ...
  * }
  */
@@ -66,11 +66,11 @@ export const getTrackingId = () : Promise<String> => {
 
 /**
  * Returns device id established by the SDK. Debug purposes.
- * @returns {promise<string>} Promise with String deviceId.
+ * @returns {Promise<string>} Promise with String deviceId.
  * @example
  *
- * async function asyncFunction() {
- *  var deviceId = await QubitSDK.getDeviceId();
+ * async () => {
+ *  const deviceId = await QubitSDK.getDeviceId();
  *  ...
  * }
  */
@@ -81,11 +81,11 @@ export const getDeviceId = () : Promise<String> => {
 
 /**
  * Returns current Lookup Data. Debug purposes.
- * @returns {promise<string>} Promise with object. Although it returns Promise, it returns value only if SDK have these information at the moment of the function call.
+ * @returns {Promise<string>} Promise with object. Although it returns Promise, it returns value only if SDK have these information at the moment of the function call.
  * @example
  *
- * async function asyncFunction() {
- *  var lookupData = await QubitSDK.getLookupData();
+ * async () => {
+ *  const lookupData = await QubitSDK.getLookupData();
  *  ...
  * }
  *
@@ -114,28 +114,28 @@ export const getLookupData = () : Promise<Object> => {
 
 /**
  * Returns list of Experiences.
- * @param {array<number>>} experienceIds List of experiences ids. When array is empty, returns all experiences.
- * @param {boolean} isVariationSet Is variation parameter meaningful?
- * @param {number} variation Meaningful only when isVariationSet is true?
+ * @param {array<number>} experienceIds List of experiences ids. When array is empty, returns all experiences.
+ * @param {boolean} isconstiationSet Is constiation parameter meaningful?
+ * @param {number} constiation Meaningful only when isconstiationSet is true?
  * @param {boolean} isPreviewSet Is preview parameter meaningful?
  * @param {boolean} preview Meaningful only when isPreviewSet is true?
  * @param {boolean} isIgnoreSegmentsSet Is ignoreSegments parameter meaningful?
  * @param {boolean} ignoreSegments Meaningful only when isIgnoreSegmentsSet is true?
- * @returns {promise<array<object>>} Promise with an array of Experiences objects.
+ * @returns {Promise<array<object>>} Promise with an array of Experiences objects.
  * @example
  *
- * async function asyncFunction() {
- *  var experiences = await QubitSDK.getExperiences([], false, 0, false, false, false, false);
+ * async () => {
+ *  const experiences = await QubitSDK.getExperiences([], false, 0, false, false, false, false);
  *  ...
  * }
  *
- * { variation: 852190,
+ * { constiation: 852190,
  *    payload: {},
  *    isControl: false,
  *    id: 143640,
  *    callback: 'https://sse.qubit.com/v1/callback?data=igKAeyJFeHBlcmllbmNlSWQiOjE0MzY0MCwiSXRlcmF0aW9uARUsMzc2MDY3LCJWYXJpFRUUODUyNzc0HRUUTWFzdGVyATAQODUyMTkBRXBzQ29udHJvbCI6ZmFsc2UsIlRyYWZmaWNBbGxvYwVKTCI6MC40NzUsIlByb2JhYmlsaXR5ARRQODI1NjI2MTk0NTgyNDQ5MSwiUGlkVhkAGFRlbXBsYXQFvwxudWxsBWZMY2tpbmdJZCI6Im1pcXVpZG8iLCIBjQhleHQFFkQ4MmFjYzNiY2FiYmNhYzM2In0='
  *  },
- * { variation: 855620,
+ * { constiation: 855620,
  *    payload: { show_share: false,
  *      show_sale_banner: false,
  *      sale_banner: 'https://dd6zx4ibq538k.cloudfront.net/static/images/5010/626263d0b3d3230f4062da1e0d1395ad_1300_554.jpeg',
@@ -144,7 +144,7 @@ export const getLookupData = () : Promise<Object> => {
  *    id: 144119,
  *    callback: 'https://sse.qubit.com/v1/callback?data=jAKAeyJFeHBlcmllbmNlSWQiOjE0NDExOSwiSXRlcmF0aW9uARUsNDUyOTEwLCJWYXJpFRUYMTAxMDcyMh0WFE1hc3RlcgExmDg1NTYyMCwiSXNDb250cm9sIjpmYWxzZSwiVHJhZmZpY0FsbG9jYQFgSCI6MC4yNSwiUHJvYmFiaWxpdHkBE2A0ODAwMTM4OTg0MjEwNjM3MywiUGlkIjowThoAGFRlbXBsYXQFwQxudWxsBWdMY2tpbmdJZCI6Im1pcXVpZG8iLCIBjghleHQFFkQ4MmFjYzNiY2FiYmNhYzM2In0='
  *  },
- * { variation: 972984,
+ * { constiation: 972984,
  *    payload: {},
  *    isControl: true,
  *    id: 160862,
@@ -154,15 +154,15 @@ export const getLookupData = () : Promise<Object> => {
  */
 export const getExperiences = (
     experienceIds: Array<Number>,
-    isVariationSet: Boolean,
-    variation: Number,
+    isconstiationSet: Boolean,
+    constiation: Number,
     isPreviewSet: Boolean,
     preview: Boolean,
     isIgnoreSegmentsSet: Boolean,
     ignoreSegments: Boolean
 ) : Promise<Object[]> => {
     if (Platform.OS === 'ios') return Promise.reject();
-    return NativeModules.QubitSDK.getExperiences(experienceIds, isVariationSet, variation, isPreviewSet, preview, isIgnoreSegmentsSet, ignoreSegments);
+    return NativeModules.QubitSDK.getExperiences(experienceIds, isconstiationSet, constiation, isPreviewSet, preview, isIgnoreSegmentsSet, ignoreSegments);
 };
 
 /**

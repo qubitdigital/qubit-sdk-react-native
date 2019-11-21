@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import {
+  Alert,
   SafeAreaView,
   TouchableOpacity,
   Text,
@@ -8,27 +9,56 @@ import {
 
 import QubitSDK from 'qubit-sdk-react-native';
 
-const initButtonPressed = () => {
-  console.debug("Init button pressed")
-  QubitSDK.init("miquido", "DEBUG");
-}
+class App extends PureComponent {
+  componentDidMount() {
+    QubitSDK.init("miquido", "DEBUG");
+  }
 
-const App = () => (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <TouchableOpacity onPress={QubitSDK.testMethod}>
-          <Text>
-            TEST METHOD FROM QUBIT-SDK
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={initButtonPressed}>
-          <Text>
-            Init
-          </Text>
-        </TouchableOpacity>
-      </SafeAreaView>
-    </>
-  );
+  sendEvent = () => {
+    QubitSDK.sendEvent("ecView", { "type": "button", "value": "click" });
+  };
+
+  enableTracker = (mode) => () => {
+    QubitSDK.enableTracker(mode);
+  };
+
+  getTrackerId = async () => {
+    const id = await QubitSDK.getTrackingId();
+    Alert.alert(
+      'Tracker Id',
+      id
+    );
+  };
+
+  render() {
+    return (
+      <>
+        <StatusBar barStyle="dark-content" />
+        <SafeAreaView>
+          <TouchableOpacity onPress={this.sendEvent}>
+            <Text>
+              Send event
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.enableTracker(true)}>
+            <Text>
+              Enable tracker
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.enableTracker(false)}>
+            <Text>
+              Disable tracker
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.getTrackerId}>
+            <Text>
+              Get tracker id
+            </Text>
+          </TouchableOpacity>
+        </SafeAreaView>
+      </>
+    )
+  }
+}
 
 export default App;
