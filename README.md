@@ -14,21 +14,6 @@ For React Native &lt; 0.60 you are supposed to link the library.
 
 `$ react-native link qubit-sdk-react-native`
 
-### Permissions
-
-Qubit's React Native SDK needs some permissions to communicate with the server and to detect network connectivity.
-
-#### Android
-
-Add lines to AndroidManifest.xml
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
-#### iOS
-
-TBD
-
 ### Usage
 
 Import whole library in your javascript files
@@ -37,10 +22,7 @@ Import whole library in your javascript files
 
 then initialize SDK
 
-    QubitSDK
-        .withLogLevel("DEBUG")
-        .withTrackingId("qubit")
-        .start();
+    QubitSDK.start("qubit", "DEBUG");
 
 and send first event
 
@@ -52,70 +34,38 @@ and send first event
 
 ##### Table of Contents
 
--   [withLogLevel](#withloglevel)
+-   [start](#start)
     -   [Parameters](#parameters)
     -   [Examples](#examples)
--   [withTrackingId](#withtrackingid)
+-   [sendEvent](#sendevent)
     -   [Parameters](#parameters-1)
     -   [Examples](#examples-1)
--   [start](#start)
-    -   [Examples](#examples-2)
--   [sendEvent](#sendevent)
-    -   [Parameters](#parameters-2)
-    -   [Examples](#examples-3)
 -   [enable](#enable)
-    -   [Parameters](#parameters-3)
-    -   [Examples](#examples-4)
+    -   [Parameters](#parameters-2)
+    -   [Examples](#examples-2)
 -   [getTrackingId](#gettrackingid)
-    -   [Examples](#examples-5)
+    -   [Examples](#examples-3)
 -   [getDeviceId](#getdeviceid)
-    -   [Examples](#examples-6)
+    -   [Examples](#examples-4)
 -   [getLookupData](#getlookupdata)
-    -   [Examples](#examples-7)
+    -   [Examples](#examples-5)
 -   [getExperiences](#getexperiences)
-    -   [Parameters](#parameters-4)
-    -   [Examples](#examples-8)
+    -   [Parameters](#parameters-3)
+    -   [Examples](#examples-6)
 
-#### withLogLevel
+#### start
 
-Setting log level for Qubit tracker
+Initialization of SDK. It should be called as early as possible after application start, only once and before any other interaction with the API.
 
 ##### Parameters
 
+-   `trackingId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Tracking id (identifier of application/company etc.)
 -   `logLevel` **(`"SILENT"` \| `"ERROR"` \| `"WARN"` \| `"INFO"` \| `"DEBUG"` \| `"VERBOSE"`)** Level of logs produced by native SDK. (optional, default `'WARN'`)
 
 ##### Examples
 
 ```javascript
-QubitSDK.withLogLevel("DEBUG");
-```
-
-Returns **QubitSDK** Return instance of QubitSDK
-
-#### withTrackingId
-
-Setting trackingId for Qubit tracker
-
-##### Parameters
-
--   `trackingId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Tracking id (identifier of application/company etc.)
-
-##### Examples
-
-```javascript
-QubitSDK.withLogLevel("qubit");
-```
-
-Returns **QubitSDK** Return instance of QubitSDK
-
-#### start
-
-Initialization of SDK. It should be called as early as possible after application start (but after withTrackingId()), only once and before any other interaction with the API.
-
-##### Examples
-
-```javascript
-QubitSDK.start();
+QubitSDK.start("qubit", "DEBUG");
 ```
 
 Returns **void** None
@@ -223,12 +173,12 @@ Returns list of Experiences.
 ##### Parameters
 
 -   `experienceIds` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>** List of experiences ids. When array is empty, returns all experiences.
--   `isconstiationSet` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Is constiation parameter meaningful?
--   `constiation` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Meaningful only when isconstiationSet is true?
--   `isPreviewSet` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Is preview parameter meaningful?
+-   `variation` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Meaningful only when isVariationSet is true?
 -   `preview` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Meaningful only when isPreviewSet is true?
--   `isIgnoreSegmentsSet` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Is ignoreSegments parameter meaningful?
 -   `ignoreSegments` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Meaningful only when isIgnoreSegmentsSet is true?
+-   `isVariationSet` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Is variation parameter meaningful?
+-   `isPreviewSet` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Is preview parameter meaningful?
+-   `isIgnoreSegmentsSet` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Is ignoreSegments parameter meaningful?
 
 ##### Examples
 
@@ -239,13 +189,13 @@ async () => {
  ...
 }
 
-{ constiation: 852190,
+{ variation: 852190,
    payload: {},
    isControl: false,
    id: 143640,
    callback: 'https://sse.qubit.com/v1/callback?data=igKAeyJFeHBlcmllbmNlSWQiOjE0MzY0MCwiSXRlcmF0aW9uARUsMzc2MDY3LCJWYXJpFRUUODUyNzc0HRUUTWFzdGVyATAQODUyMTkBRXBzQ29udHJvbCI6ZmFsc2UsIlRyYWZmaWNBbGxvYwVKTCI6MC40NzUsIlByb2JhYmlsaXR5ARRQODI1NjI2MTk0NTgyNDQ5MSwiUGlkVhkAGFRlbXBsYXQFvwxudWxsBWZMY2tpbmdJZCI6Im1pcXVpZG8iLCIBjQhleHQFFkQ4MmFjYzNiY2FiYmNhYzM2In0='
  },
-{ constiation: 855620,
+{ variation: 855620,
    payload: { show_share: false,
      show_sale_banner: false,
      sale_banner: 'https://dd6zx4ibq538k.cloudfront.net/static/images/5010/626263d0b3d3230f4062da1e0d1395ad_1300_554.jpeg',
@@ -254,7 +204,7 @@ async () => {
    id: 144119,
    callback: 'https://sse.qubit.com/v1/callback?data=jAKAeyJFeHBlcmllbmNlSWQiOjE0NDExOSwiSXRlcmF0aW9uARUsNDUyOTEwLCJWYXJpFRUYMTAxMDcyMh0WFE1hc3RlcgExmDg1NTYyMCwiSXNDb250cm9sIjpmYWxzZSwiVHJhZmZpY0FsbG9jYQFgSCI6MC4yNSwiUHJvYmFiaWxpdHkBE2A0ODAwMTM4OTg0MjEwNjM3MywiUGlkIjowThoAGFRlbXBsYXQFwQxudWxsBWdMY2tpbmdJZCI6Im1pcXVpZG8iLCIBjghleHQFFkQ4MmFjYzNiY2FiYmNhYzM2In0='
  },
-{ constiation: 972984,
+{ variation: 972984,
    payload: {},
    isControl: true,
    id: 160862,

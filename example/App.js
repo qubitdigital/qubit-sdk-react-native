@@ -11,10 +11,7 @@ import QubitSDK from 'qubit-sdk-react-native';
 
 class App extends PureComponent {
   componentDidMount() {
-    QubitSDK
-      .withLogLevel("DEBUG")
-      .withTrackingId("miquido")
-      .start();
+    QubitSDK.start("miquido", "DEBUG");
   }
 
   sendEvent = () => {
