@@ -6,7 +6,7 @@ type Experience = {
     id: number,
     callback: string,
     variation: number
-    shown: void
+    shown: () => void
 }
 
 class QubitSDK {
