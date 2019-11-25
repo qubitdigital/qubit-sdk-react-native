@@ -11,7 +11,10 @@ import QubitSDK from 'qubit-sdk-react-native';
 
 class App extends PureComponent {
   componentDidMount() {
-    QubitSDK.init("miquido", "DEBUG");
+    QubitSDK
+      .withLogLevel("DEBUG")
+      .withTrackingId("miquido")
+      .start();
   }
 
   sendEvent = () => {
@@ -19,7 +22,7 @@ class App extends PureComponent {
   };
 
   enableTracker = (mode) => () => {
-    QubitSDK.enableTracker(mode);
+    QubitSDK.enable(mode);
   };
 
   getTrackerId = async () => {

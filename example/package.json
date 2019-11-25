@@ -9,6 +9,7 @@
     "clean": "watchman watch-del-all && rm -rf package-lock.json && rm -rf node_modules && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && yarn"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.6.3",
     "qubit-sdk-react-native": "file:..",
     "react": "16.9.0",
     "react-native": "0.61.4"

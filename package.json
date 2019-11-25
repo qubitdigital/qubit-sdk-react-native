@@ -9,7 +9,8 @@
     "build": "tsc",
     "build-prod": "rm -rf dist && yarn run build && yarn run docs",
     "docs": "documentation readme dist/** --section=\"API documentation\"",
-    "precommit": "yarn run build"
+    "precommit": "yarn run build",
+    "clean": "watchman watch-del-all && rm -rf package-lock.json && rm -rf node_modules && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && yarn"
   },
   "repository": {
     "type": "git",
