@@ -1,5 +1,16 @@
 import { NativeModules, Platform } from 'react-native';
 
+/**
+ * Experience object
+ * @typedef {object} Experience
+ * @property {object} payload - payload object
+ * @property {boolean} isControl
+ * @property {number} id - Id of Experience
+ * @property {string} callback - Callback URL
+ * @property {number} variation - Indicates variation number
+ * @property {void} shown - Sends to server information, that experience was shown
+ */
+
 type Experience = {
     payload: object,
     isControl: boolean,
@@ -120,13 +131,10 @@ class QubitSDK {
     /**
      * Returns list of Experiences.
      * @param {array<number>} experienceIds List of experiences ids. When array is empty, returns all experiences.
-     * @param {boolean} isVariationSet Is variation parameter meaningful?
-     * @param {number} variation Meaningful only when isVariationSet is true?
-     * @param {boolean} isPreviewSet Is preview parameter meaningful?
-     * @param {boolean} preview Meaningful only when isPreviewSet is true?
-     * @param {boolean} isIgnoreSegmentsSet Is ignoreSegments parameter meaningful?
-     * @param {boolean} ignoreSegments Meaningful only when isIgnoreSegmentsSet is true?
-     * @returns {Promise<array<object>>} Promise with an array of Experiences objects.
+     * @param {number} [variation] Optional.
+     * @param {boolean} [preview] Optional.
+     * @param {boolean} [ignoreSegments] Optional.
+     * @returns {Promise<array<Experience>>} Promise with an array of Experience objects.
      * @example
      *
      * async () => {
@@ -160,9 +168,9 @@ class QubitSDK {
      */
     public getExperiences(
         experienceIds: Array<number>,
-        variation: number,
-        preview: boolean,
-        ignoreSegments: boolean
+        variation?: number,
+        preview?: boolean,
+        ignoreSegments?: boolean
     ) : Promise<Experience[]> {
         return new Promise((resolve, reject) => {
             if (Platform.OS === 'ios') reject();
