@@ -181,7 +181,7 @@ Returns list of Experiences.
 
 ```javascript
 async () => {
- const experiences = await QubitSDK.getExperiences([], false, 0, false, false, false, false);
+ const experiences = await QubitSDK.getExperiences([], 0, false, false);
  experiences.forEach(e => e.shown());
  ...
 }

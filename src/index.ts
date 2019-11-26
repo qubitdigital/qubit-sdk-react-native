@@ -33,7 +33,7 @@ class QubitSDK {
     public start(trackingId : string, logLevel : 'SILENT'|'ERROR'|'WARN'|'INFO'|'DEBUG'|'VERBOSE') : void {
         if (Platform.OS === 'ios') return;
         NativeModules.QubitSDK.init(
-            trackingId || 0,
+            trackingId || '',
             logLevel || ''
         );
     }
@@ -69,7 +69,7 @@ class QubitSDK {
     public enable(value: boolean) {
         if (Platform.OS === 'ios') return;
         NativeModules.QubitSDK.enableTracker(
-            value || false
+            value || true
         );
     }
 
@@ -146,7 +146,7 @@ class QubitSDK {
      * @example
      *
      * async () => {
-     *  const experiences = await QubitSDK.getExperiences([], false, 0, false, false, false, false);
+     *  const experiences = await QubitSDK.getExperiences([], 0, false, false);
      *  experiences.forEach(e => e.shown());
      *  ...
      * }
