@@ -14,21 +14,6 @@ For React Native &lt; 0.60 you are supposed to link the library.
 
 `$ react-native link qubit-sdk-react-native`
 
-### Permissions
-
-Qubit's React Native SDK needs some permissions to communicate with the server and to detect network connectivity.
-
-#### Android
-
-Add lines to AndroidManifest.xml
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
-#### iOS
-
-TBD
-
 ### Usage
 
 Import whole library in your javascript files
@@ -37,10 +22,7 @@ Import whole library in your javascript files
 
 then initialize SDK
 
-    QubitSDK
-        .withLogLevel("DEBUG")
-        .withTrackingId("qubit")
-        .start();
+    QubitSDK.start("qubit");
 
 and send first event
 
@@ -52,70 +34,38 @@ and send first event
 
 ##### Table of Contents
 
--   [withLogLevel](#withloglevel)
+-   [start](#start)
     -   [Parameters](#parameters)
     -   [Examples](#examples)
--   [withTrackingId](#withtrackingid)
+-   [sendEvent](#sendevent)
     -   [Parameters](#parameters-1)
     -   [Examples](#examples-1)
--   [start](#start)
-    -   [Examples](#examples-2)
--   [sendEvent](#sendevent)
-    -   [Parameters](#parameters-2)
-    -   [Examples](#examples-3)
 -   [enable](#enable)
-    -   [Parameters](#parameters-3)
-    -   [Examples](#examples-4)
+    -   [Parameters](#parameters-2)
+    -   [Examples](#examples-2)
 -   [getTrackingId](#gettrackingid)
-    -   [Examples](#examples-5)
+    -   [Examples](#examples-3)
 -   [getDeviceId](#getdeviceid)
-    -   [Examples](#examples-6)
+    -   [Examples](#examples-4)
 -   [getLookupData](#getlookupdata)
-    -   [Examples](#examples-7)
+    -   [Examples](#examples-5)
 -   [getExperiences](#getexperiences)
-    -   [Parameters](#parameters-4)
-    -   [Examples](#examples-8)
+    -   [Parameters](#parameters-3)
+    -   [Examples](#examples-6)
 
-#### withLogLevel
+#### start
 
-Setting log level for Qubit tracker
+Initialization of SDK. It should be called as early as possible after application start, only once and before any other interaction with the API.
 
 ##### Parameters
 
+-   `trackingId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Tracking id (identifier of application/company etc.)
 -   `logLevel` **(`"SILENT"` \| `"ERROR"` \| `"WARN"` \| `"INFO"` \| `"DEBUG"` \| `"VERBOSE"`)** Level of logs produced by native SDK. (optional, default `'WARN'`)
 
 ##### Examples
 
 ```javascript
-QubitSDK.withLogLevel("DEBUG");
-```
-
-Returns **QubitSDK** Return instance of QubitSDK
-
-#### withTrackingId
-
-Setting trackingId for Qubit tracker
-
-##### Parameters
-
--   `trackingId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Tracking id (identifier of application/company etc.)
-
-##### Examples
-
-```javascript
-QubitSDK.withLogLevel("qubit");
-```
-
-Returns **QubitSDK** Return instance of QubitSDK
-
-#### start
-
-Initialization of SDK. It should be called as early as possible after application start (but after withTrackingId()), only once and before any other interaction with the API.
-
-##### Examples
-
-```javascript
-QubitSDK.start();
+QubitSDK.start("qubit", "DEBUG");
 ```
 
 Returns **void** None
@@ -223,29 +173,26 @@ Returns list of Experiences.
 ##### Parameters
 
 -   `experienceIds` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>** List of experiences ids. When array is empty, returns all experiences.
--   `isconstiationSet` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Is constiation parameter meaningful?
--   `constiation` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Meaningful only when isconstiationSet is true?
--   `isPreviewSet` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Is preview parameter meaningful?
--   `preview` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Meaningful only when isPreviewSet is true?
--   `isIgnoreSegmentsSet` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Is ignoreSegments parameter meaningful?
--   `ignoreSegments` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Meaningful only when isIgnoreSegmentsSet is true?
+-   `variation` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)?** Optional.
+-   `preview` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** Optional.
+-   `ignoreSegments` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** Optional.
 
 ##### Examples
 
 ```javascript
 async () => {
- const experiences = await QubitSDK.getExperiences([], false, 0, false, false, false, false);
+ const experiences = await QubitSDK.getExperiences([], 0, false, false);
  experiences.forEach(e => e.shown());
  ...
 }
 
-{ constiation: 852190,
+{ variation: 852190,
    payload: {},
    isControl: false,
    id: 143640,
    callback: 'https://sse.qubit.com/v1/callback?data=igKAeyJFeHBlcmllbmNlSWQiOjE0MzY0MCwiSXRlcmF0aW9uARUsMzc2MDY3LCJWYXJpFRUUODUyNzc0HRUUTWFzdGVyATAQODUyMTkBRXBzQ29udHJvbCI6ZmFsc2UsIlRyYWZmaWNBbGxvYwVKTCI6MC40NzUsIlByb2JhYmlsaXR5ARRQODI1NjI2MTk0NTgyNDQ5MSwiUGlkVhkAGFRlbXBsYXQFvwxudWxsBWZMY2tpbmdJZCI6Im1pcXVpZG8iLCIBjQhleHQFFkQ4MmFjYzNiY2FiYmNhYzM2In0='
  },
-{ constiation: 855620,
+{ variation: 855620,
    payload: { show_share: false,
      show_sale_banner: false,
      sale_banner: 'https://dd6zx4ibq538k.cloudfront.net/static/images/5010/626263d0b3d3230f4062da1e0d1395ad_1300_554.jpeg',
@@ -254,7 +201,7 @@ async () => {
    id: 144119,
    callback: 'https://sse.qubit.com/v1/callback?data=jAKAeyJFeHBlcmllbmNlSWQiOjE0NDExOSwiSXRlcmF0aW9uARUsNDUyOTEwLCJWYXJpFRUYMTAxMDcyMh0WFE1hc3RlcgExmDg1NTYyMCwiSXNDb250cm9sIjpmYWxzZSwiVHJhZmZpY0FsbG9jYQFgSCI6MC4yNSwiUHJvYmFiaWxpdHkBE2A0ODAwMTM4OTg0MjEwNjM3MywiUGlkIjowThoAGFRlbXBsYXQFwQxudWxsBWdMY2tpbmdJZCI6Im1pcXVpZG8iLCIBjghleHQFFkQ4MmFjYzNiY2FiYmNhYzM2In0='
  },
-{ constiation: 972984,
+{ variation: 972984,
    payload: {},
    isControl: true,
    id: 160862,
@@ -263,182 +210,7 @@ async () => {
 ]
 ```
 
-Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>>** Promise with an array of Experiences objects.
-
-### init
-
-Initialization of SDK. It should be called as early as possible after application start, only once and before any other interaction with the API.
-
-#### Parameters
-
--   `trackingId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Tracking id (identifier of application/company etc.)
--   `logLevel` **(`"SILENT"` \| `"ERROR"` \| `"WARN"` \| `"INFO"` \| `"DEBUG"` \| `"VERBOSE"`)** Level of logs produced by native SDK. (optional, default `'VERBOSE'`)
-
-#### Examples
-
-```javascript
-QubitSDK.init("qubit", "DEBUG");
-```
-
-Returns **void** None
-
-### sendEvent
-
-Sends event to the server.
-
-#### Parameters
-
--   `eventType` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Type of event. eg. ecView
--   `eventBody` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Javascript map of any structure
-
-#### Examples
-
-```javascript
-QubitSDK.sendEvent("ecView", { "type": "button", "value": "click" });
-```
-
-Returns **void** None
-
-### enableTracker
-
-Enables or disables receiving events.
-
-#### Parameters
-
--   `enable` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true for enabling, false for disabling
-
-#### Examples
-
-```javascript
-QubitSDK.enableTracker(false);
-```
-
-Returns **void** None
-
-### getTrackingId
-
-Returns trackingId. Debug purposes.
-
-#### Examples
-
-```javascript
-async () => {
- const trackingId = await QubitSDK.getTrackingId();
- ...
-}
-```
-
-Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** Promise with String trackingId.
-
-### getDeviceId
-
-Returns device id established by the SDK. Debug purposes.
-
-#### Examples
-
-```javascript
-async () => {
- const deviceId = await QubitSDK.getDeviceId();
- ...
-}
-```
-
-Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** Promise with String deviceId.
-
-### getLookupData
-
-Returns current Lookup Data. Debug purposes.
-
-#### Examples
-
-```javascript
-async () => {
- const lookupData = await QubitSDK.getLookupData();
- ...
-}
-
-{ viewNumber: 10,
- sessionNumber: 4,
- lastViewTs: 1863218003,
- ipLocation:
-  { regionCode: '36004',
-    region: 'unknown',
-    longitude: 19.9612,
-    latitude: 50.0495,
-    countryCode: 'PL',
-    country: 'poland',
-    cityCode: '1803',
-    city: 'krakow',
-    areaCode: 'unknown',
-    area: 'unknown' },
- ipAddress: '93.180.179.112',
- firstViewTs: 1696635454
-}
-```
-
-Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** Promise with object. Although it returns Promise, it returns value only if SDK have these information at the moment of the function call.
-
-### getExperiences
-
-Returns list of Experiences.
-
-#### Parameters
-
--   `experienceIds` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>** List of experiences ids. When array is empty, returns all experiences.
--   `isconstiationSet` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Is constiation parameter meaningful?
--   `constiation` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Meaningful only when isconstiationSet is true?
--   `isPreviewSet` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Is preview parameter meaningful?
--   `preview` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Meaningful only when isPreviewSet is true?
--   `isIgnoreSegmentsSet` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Is ignoreSegments parameter meaningful?
--   `ignoreSegments` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Meaningful only when isIgnoreSegmentsSet is true?
-
-#### Examples
-
-```javascript
-async () => {
- const experiences = await QubitSDK.getExperiences([], false, 0, false, false, false, false);
- ...
-}
-
-{ constiation: 852190,
-   payload: {},
-   isControl: false,
-   id: 143640,
-   callback: 'https://sse.qubit.com/v1/callback?data=igKAeyJFeHBlcmllbmNlSWQiOjE0MzY0MCwiSXRlcmF0aW9uARUsMzc2MDY3LCJWYXJpFRUUODUyNzc0HRUUTWFzdGVyATAQODUyMTkBRXBzQ29udHJvbCI6ZmFsc2UsIlRyYWZmaWNBbGxvYwVKTCI6MC40NzUsIlByb2JhYmlsaXR5ARRQODI1NjI2MTk0NTgyNDQ5MSwiUGlkVhkAGFRlbXBsYXQFvwxudWxsBWZMY2tpbmdJZCI6Im1pcXVpZG8iLCIBjQhleHQFFkQ4MmFjYzNiY2FiYmNhYzM2In0='
- },
-{ constiation: 855620,
-   payload: { show_share: false,
-     show_sale_banner: false,
-     sale_banner: 'https://dd6zx4ibq538k.cloudfront.net/static/images/5010/626263d0b3d3230f4062da1e0d1395ad_1300_554.jpeg',
-    free_shipping: 'Shipping is free for you!' },
-   isControl: false,
-   id: 144119,
-   callback: 'https://sse.qubit.com/v1/callback?data=jAKAeyJFeHBlcmllbmNlSWQiOjE0NDExOSwiSXRlcmF0aW9uARUsNDUyOTEwLCJWYXJpFRUYMTAxMDcyMh0WFE1hc3RlcgExmDg1NTYyMCwiSXNDb250cm9sIjpmYWxzZSwiVHJhZmZpY0FsbG9jYQFgSCI6MC4yNSwiUHJvYmFiaWxpdHkBE2A0ODAwMTM4OTg0MjEwNjM3MywiUGlkIjowThoAGFRlbXBsYXQFwQxudWxsBWdMY2tpbmdJZCI6Im1pcXVpZG8iLCIBjghleHQFFkQ4MmFjYzNiY2FiYmNhYzM2In0='
- },
-{ constiation: 972984,
-   payload: {},
-   isControl: true,
-   id: 160862,
-   callback: 'https://sse.qubit.com/v1/callback?data=iQKAeyJFeHBlcmllbmNlSWQiOjE2MDg2MiwiSXRlcmF0aW9uARUsNDM0NjIzLCJWYXJpFRUUOTcyOTg0HRUUTWFzdGVyATARG3BJc0NvbnRyb2wiOnRydWUsIlRyYWZmaWNBbGxvYwVJRCI6MC41LCJQcm9iYWJpbGl0eQESVDAzNjQzMTAyMTQ3MTU5ODkyLCJQaWRaGgAYVGVtcGxhdAW-DG51bGwFZhBja2luZwGLKCJtaXF1aWRvIiwiAYwIZXh0BRZEODJhY2MzYmNhYmJjYWMzNiJ9'
- }
-]
-```
-
-Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>>** Promise with an array of Experiences objects.
-
-### experienceShown
-
-Sends to server information, that experience was shown
-
-#### Parameters
-
--   `callback` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Value of callback property in the result of getExperiences function.
-
-#### Examples
-
-```javascript
-QubitSDK.experienceShown("https://sse.qubit.com/v1/callback?data=igK....n0=");
-```
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Experience>>** Promise with an array of Experience objects.
 
 ### Compatibility
 
