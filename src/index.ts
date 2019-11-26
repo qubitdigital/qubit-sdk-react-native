@@ -8,7 +8,7 @@ import { NativeModules, Platform } from 'react-native';
  * @property {number} id - Id of Experience
  * @property {string} callback - Callback URL
  * @property {number} variation - Indicates variation number
- * @property {void} shown - Sends to server information, that experience was shown
+ * @property {function} shown - Sends to server information, that experience was shown
  */
 
 type Experience = {
@@ -32,7 +32,10 @@ class QubitSDK {
      */
     public start(trackingId : string, logLevel : 'SILENT'|'ERROR'|'WARN'|'INFO'|'DEBUG'|'VERBOSE') : void {
         if (Platform.OS === 'ios') return;
-        NativeModules.QubitSDK.init(trackingId, logLevel);
+        NativeModules.QubitSDK.init(
+            trackingId || 0,
+            logLevel || ''
+        );
     }
 
     /**
@@ -49,7 +52,10 @@ class QubitSDK {
         eventBody : object
     ) : void {
         if (Platform.OS === 'ios') return;
-        NativeModules.QubitSDK.sendEvent(eventType, eventBody);
+        NativeModules.QubitSDK.sendEvent(
+            eventType || '',
+            eventBody || {}
+        );
     }
 
     /**
@@ -62,7 +68,9 @@ class QubitSDK {
      */
     public enable(value: boolean) {
         if (Platform.OS === 'ios') return;
-        NativeModules.QubitSDK.enableTracker(value);
+        NativeModules.QubitSDK.enableTracker(
+            value || false
+        );
     }
 
     /**
@@ -172,21 +180,17 @@ class QubitSDK {
         preview?: boolean,
         ignoreSegments?: boolean
     ) : Promise<Experience[]> {
-        return new Promise((resolve, reject) => {
-            if (Platform.OS === 'ios') reject();
-            NativeModules.QubitSDK.getExperiences(
-                experienceIds,
-                !(variation == null),
-                variation || 0,
-                !(preview == null),
-                preview || false,
-                !(ignoreSegments == null),
-                ignoreSegments || false
-            )
-                .then(experiences => resolve(experiences.map(e => ({...e, shown: () => { NativeModules.QubitSDK.experienceShown(e)} }))))
-                .catch(reject)
-        })
-
+        if (Platform.OS === 'ios') return Promise.reject();
+        return NativeModules.QubitSDK.getExperiences(
+            experienceIds || [],
+            !(variation == null),
+            variation || 0,
+            !(preview == null),
+            preview || false,
+            !(ignoreSegments == null),
+            ignoreSegments || false
+        )
+            .then(experiences => experiences.map(e => ({...e, shown: () => { NativeModules.QubitSDK.experienceShown(e.callback || '')} })))
     }
 }
 

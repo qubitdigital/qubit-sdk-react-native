@@ -22,7 +22,7 @@ Import whole library in your javascript files
 
 then initialize SDK
 
-    QubitSDK.start("qubit", "DEBUG");
+    QubitSDK.start("qubit");
 
 and send first event
 
