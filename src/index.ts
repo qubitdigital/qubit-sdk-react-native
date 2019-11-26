@@ -69,7 +69,7 @@ class QubitSDK {
     public enable(value: boolean) {
         if (Platform.OS === 'ios') return;
         NativeModules.QubitSDK.enableTracker(
-            value || true
+            value != null ? value : true
         );
     }
 
