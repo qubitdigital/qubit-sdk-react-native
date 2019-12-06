@@ -2,8 +2,6 @@ platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 target 'qubitsdk' do
-  use_frameworks!
-  pod 'QubitSDK', path: "../node_modules/qubit-sdk-react-native/ios/QubitSDK.framework"
   use_native_modules!
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"

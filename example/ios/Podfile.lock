@@ -21,7 +21,6 @@ PODS:
   - glog (0.3.5)
   - qubit-sdk-react-native (1.0.0):
     - React
-  - QubitSDK (1.0.3)
   - RCTRequired (0.61.4)
   - RCTTypeSafety (0.61.4):
     - FBLazyVector (= 0.61.4)
@@ -231,7 +230,6 @@ DEPENDENCIES:
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - qubit-sdk-react-native (from `../node_modules/qubit-sdk-react-native`)
-  - QubitSDK (from `https://github.com/qubitdigital/qubit-sdk-ios.git`, branch `swift_5.1`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - React (from `../node_modules/react-native/`)
@@ -274,9 +272,6 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   qubit-sdk-react-native:
     :path: "../node_modules/qubit-sdk-react-native"
-  QubitSDK:
-    :branch: swift_5.1
-    :git: https://github.com/qubitdigital/qubit-sdk-ios.git
   RCTRequired:
     :path: "../node_modules/react-native/Libraries/RCTRequired"
   RCTTypeSafety:
@@ -320,11 +315,6 @@ EXTERNAL SOURCES:
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
-CHECKOUT OPTIONS:
-  QubitSDK:
-    :commit: d767143762070201bf0d776838a7360ebee9080a
-    :git: https://github.com/qubitdigital/qubit-sdk-ios.git
-
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
@@ -332,8 +322,7 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: 51477b84b1bf7ab6f9ef307c24e3dd675391be44
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
-  qubit-sdk-react-native: 41dc52762fc14e463c65b62d6b2315316ffefbc8
-  QubitSDK: 5e574fb6e6fe6ed51ea9ea932a87a9d3d4dd1764
+  qubit-sdk-react-native: 42cabee65e2668143b3146e3a1ac1a2bbf095c51
   RCTRequired: f3b3fb6f4723e8e52facb229d0c75fdc76773849
   RCTTypeSafety: 2ec60de6abb1db050b56ecc4b60188026078fd10
   React: 10e0130b57e55a7cd8c3dee37c1261102ce295f4
@@ -356,6 +345,6 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 3c304d1adfaea02ec732ac218801cb13897aa8c0
   Yoga: ba3d99dbee6c15ea6bbe3783d1f0cb1ffb79af0f
 
-PODFILE CHECKSUM: 1eb5b34c20d19997f21f28b2c6075719704fdcae
+PODFILE CHECKSUM: 1049a540a8eb1a710351d44c5af06db81e8fe54a
 
 COCOAPODS: 1.8.0
