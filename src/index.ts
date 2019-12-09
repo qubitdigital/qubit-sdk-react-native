@@ -50,7 +50,6 @@ class QubitSDK {
         eventType : string,
         eventBody : object
     ) : void {
-        if (Platform.OS === 'ios') return;
         NativeModules.QubitSDK.sendEvent(
             eventType || '',
             eventBody || {}
@@ -128,7 +127,6 @@ class QubitSDK {
      * }
      */
     public getLookupData() : Promise<object> {
-        if (Platform.OS === 'ios') return Promise.reject();
         return NativeModules.QubitSDK.getLookupData();
     };
 
@@ -176,7 +174,6 @@ class QubitSDK {
         preview?: boolean,
         ignoreSegments?: boolean
     ) : Promise<Experience[]> {
-        if (Platform.OS === 'ios') return Promise.reject();
         return NativeModules.QubitSDK.getExperiences(
             experienceIds || [],
             !(variation == null),
