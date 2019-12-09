@@ -31,7 +31,6 @@ class QubitSDK {
      * QubitSDK.start("qubit", "DEBUG");
      */
     public start(trackingId : string, logLevel : 'SILENT'|'ERROR'|'WARN'|'INFO'|'DEBUG'|'VERBOSE') : void {
-        if (Platform.OS === 'ios') return;
         NativeModules.QubitSDK.init(
             trackingId || '',
             logLevel || ''
@@ -67,7 +66,6 @@ class QubitSDK {
      * QubitSDK.enable(false);
      */
     public enable(value: boolean) {
-        if (Platform.OS === 'ios') return;
         NativeModules.QubitSDK.enableTracker(
             value != null ? value : true
         );
@@ -84,7 +82,6 @@ class QubitSDK {
      * }
      */
     public getTrackingId() : Promise<string> {
-        if (Platform.OS === 'ios') return Promise.reject();
         return NativeModules.QubitSDK.getTrackingId();
     }
 
@@ -99,7 +96,6 @@ class QubitSDK {
      * }
      */
     public getDeviceId() : Promise<string> {
-        if (Platform.OS === 'ios') return Promise.reject();
         return NativeModules.QubitSDK.getDeviceId();
     };
 

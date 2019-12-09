@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB7E2E2A239946D100A8E3D3 /* QubitSDKModuleEnumConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7E2E1C239946AC00A8E3D3 /* QubitSDKModuleEnumConverter.m */; };
-		EB7E2E2B239946D100A8E3D3 /* QubitSDKModule.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7E2E1A239946AC00A8E3D3 /* QubitSDKModule.m */; };
-		EB7E2E3223994BC400A8E3D3 /* QubitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7E2E3123994BC400A8E3D3 /* QubitSDK.framework */; };
+		EB7E2FE1239E422600A8E3D3 /* QubitSDKModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7E2FE0239E422600A8E3D3 /* QubitSDKModule.swift */; };
+		EB7E2FE3239E43EC00A8E3D3 /* QBLogLevel+FromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7E2FE2239E43EC00A8E3D3 /* QBLogLevel+FromString.swift */; };
+		EB7E2FE5239E52A000A8E3D3 /* QubitSDKModule.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7E2FE4239E52A000A8E3D3 /* QubitSDKModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,11 +25,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		EB7E2E1A239946AC00A8E3D3 /* QubitSDKModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QubitSDKModule.m; sourceTree = "<group>"; };
-		EB7E2E1B239946AC00A8E3D3 /* QubitSDKModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QubitSDKModule.h; sourceTree = "<group>"; };
-		EB7E2E1C239946AC00A8E3D3 /* QubitSDKModuleEnumConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QubitSDKModuleEnumConverter.m; sourceTree = "<group>"; };
 		EB7E2E23239946CA00A8E3D3 /* libQubitSDKModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libQubitSDKModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB7E2E3123994BC400A8E3D3 /* QubitSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QubitSDK.framework; sourceTree = "<group>"; };
+		EB7E2FDF239E422600A8E3D3 /* QubitSDKModule-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QubitSDKModule-Bridging-Header.h"; sourceTree = "<group>"; };
+		EB7E2FE0239E422600A8E3D3 /* QubitSDKModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QubitSDKModule.swift; sourceTree = "<group>"; };
+		EB7E2FE2239E43EC00A8E3D3 /* QBLogLevel+FromString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QBLogLevel+FromString.swift"; sourceTree = "<group>"; };
+		EB7E2FE4239E52A000A8E3D3 /* QubitSDKModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QubitSDKModule.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -39,7 +39,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB7E2E3223994BC400A8E3D3 /* QubitSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,7 +48,6 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EB7E2E3123994BC400A8E3D3 /* QubitSDK.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 			);
@@ -87,9 +85,10 @@
 		EB7E2E24239946CA00A8E3D3 /* QubitSDKModule */ = {
 			isa = PBXGroup;
 			children = (
-				EB7E2E1A239946AC00A8E3D3 /* QubitSDKModule.m */,
-				EB7E2E1B239946AC00A8E3D3 /* QubitSDKModule.h */,
-				EB7E2E1C239946AC00A8E3D3 /* QubitSDKModuleEnumConverter.m */,
+				EB7E2FE4239E52A000A8E3D3 /* QubitSDKModule.m */,
+				EB7E2FE0239E422600A8E3D3 /* QubitSDKModule.swift */,
+				EB7E2FDF239E422600A8E3D3 /* QubitSDKModule-Bridging-Header.h */,
+				EB7E2FE2239E43EC00A8E3D3 /* QBLogLevel+FromString.swift */,
 			);
 			path = QubitSDKModule;
 			sourceTree = "<group>";
@@ -126,6 +125,7 @@
 				TargetAttributes = {
 					EB7E2E22239946CA00A8E3D3 = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -153,8 +153,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB7E2E2A239946D100A8E3D3 /* QubitSDKModuleEnumConverter.m in Sources */,
-				EB7E2E2B239946D100A8E3D3 /* QubitSDKModule.m in Sources */,
+				EB7E2FE1239E422600A8E3D3 /* QubitSDKModule.swift in Sources */,
+				EB7E2FE3239E43EC00A8E3D3 /* QBLogLevel+FromString.swift in Sources */,
+				EB7E2FE5239E52A000A8E3D3 /* QubitSDKModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +269,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
@@ -279,12 +281,14 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "QubitSDKModule/QubitSDKModule-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -297,6 +301,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
@@ -309,10 +314,12 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "QubitSDKModule/QubitSDKModule-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
