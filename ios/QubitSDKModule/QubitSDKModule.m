@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <React/RCTBridgeModule.h>
 
-@interface RCT_EXTERN_MODULE(QubitSDKModule, NSObject)
+@interface RCT_EXTERN_REMAP_MODULE(QubitSDK, QubitSDKModule, NSObject)
 
 RCT_EXTERN_METHOD(init:(NSString *)trackingId logLevel:(NSString *)logLevel)
 RCT_EXTERN_METHOD(sendEvent:(NSString *)eventType eventBody:(NSDictionary *)eventBody)

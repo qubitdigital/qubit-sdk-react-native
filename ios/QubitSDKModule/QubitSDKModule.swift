@@ -64,4 +64,8 @@ class QubitSDKModule: NSObject {
         expEntity.shown()
     }
     
+    @objc
+    static func requiresMainQueueSetup() -> Bool {
+      return true
+    }
 }
