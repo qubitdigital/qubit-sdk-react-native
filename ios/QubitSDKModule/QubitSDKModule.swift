@@ -24,11 +24,7 @@ class QubitSDKModule: NSObject {
     
     @objc(enableTracker:)
     func enableTracker(enable: Bool) {
-        //TODO ios sdk doesn't contain method for pausing and starting tracker again.
-        //There is only stopTracking() method, and after that, SDK has to be reinited.
-        //Possibly need to implement
-        guard !enable else {return}
-        QubitSDK.stopTracking()
+        QubitSDK.enableTracker(enable: enable)
     }
     
     @objc(getTrackingId:rejecter:)
@@ -43,8 +39,11 @@ class QubitSDKModule: NSObject {
     
     @objc(getLookupData:rejecter:)
     func getLookupData(resolver: RCTPromiseResolveBlock, rejecter: RCTPromiseRejectBlock) {
-        //TODO looks like there is no public method inside QubitSDK to retrieve this, need to implement?
-        resolver(nil)
+        guard let lookup = QubitSDK.getLookupData() else {
+            rejecter("Error", "QubitModuleSDK: getLookupData returned nil; probably no lookup data yet", nil)
+            return
+        }
+        resolver(lookup)
     }
     
     @objc(getExperiences:isVariationSet:variation:isPreviewSet:preview:isIgnoreSegmentsSet:ignoreSegments:resolver:rejecter:)
@@ -60,12 +59,11 @@ class QubitSDKModule: NSObject {
     
     @objc(experienceShown:)
     func experienceShown(callback: String) {
-        guard let expEntity = QBExperienceEntity(callback: callback) else {return}
-        expEntity.shown()
+        QBExperienceEntityCallback(callback: callback).shown()
     }
     
     @objc
     static func requiresMainQueueSetup() -> Bool {
-      return true
+        return true
     }
 }

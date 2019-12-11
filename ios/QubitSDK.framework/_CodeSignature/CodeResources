@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/QubitSDK.h</key>
 		<data>
-		a3Tzd2wHk0CuQTFu7EbBZScfnRs=
+		Kzny1NJ79DBcHQ23/C2HyEydhYk=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -14,19 +14,19 @@
 		</data>
 		<key>Modules/QubitSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		l5zQjqDmbJtxuI7vVn0kJJsx6Do=
+		dEOmdiBmCP+pBBuijhzDQEyPyf8=
 		</data>
 		<key>Modules/QubitSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		i3DGVe02OIx8fgFlrVcY8cGxN34=
+		kPOCiick1SMNFAH1PrgXwnf+th0=
 		</data>
 		<key>Modules/QubitSDK.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		l5zQjqDmbJtxuI7vVn0kJJsx6Do=
+		dEOmdiBmCP+pBBuijhzDQEyPyf8=
 		</data>
 		<key>Modules/QubitSDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		i3DGVe02OIx8fgFlrVcY8cGxN34=
+		kPOCiick1SMNFAH1PrgXwnf+th0=
 		</data>
 		<key>QBDataModel.momd/QBDataModel 2.mom</key>
 		<data>
@@ -51,55 +51,55 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			a3Tzd2wHk0CuQTFu7EbBZScfnRs=
+			Kzny1NJ79DBcHQ23/C2HyEydhYk=
 			</data>
 			<key>hash2</key>
 			<data>
-			yYYQGrOdV+IG3B+5h9nV90y5kVukUg5QmnAkhpny6wk=
+			fALXUdErHZcQx2xfQ4fYkdiU4OHTLVLedEMEz49eiSw=
 			</data>
 		</dict>
 		<key>Modules/QubitSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			l5zQjqDmbJtxuI7vVn0kJJsx6Do=
+			dEOmdiBmCP+pBBuijhzDQEyPyf8=
 			</data>
 			<key>hash2</key>
 			<data>
-			TWyYmJns0gU0JGjHk6lrLjiYvbQ81aT8VHIbUsYoBRc=
+			qVmxj/VCHH5REgr6AJbYAwZ635FjGjG4e9EoNQP8L+4=
 			</data>
 		</dict>
 		<key>Modules/QubitSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			i3DGVe02OIx8fgFlrVcY8cGxN34=
+			kPOCiick1SMNFAH1PrgXwnf+th0=
 			</data>
 			<key>hash2</key>
 			<data>
-			gliBbIakjYzjd+zO0leCYbnellbKLSI6TsujIhkRaf0=
+			fN3lh2rfID6QZFMqRsStzvCn/S4oLrH2n2ZEGCXZG8I=
 			</data>
 		</dict>
 		<key>Modules/QubitSDK.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			l5zQjqDmbJtxuI7vVn0kJJsx6Do=
+			dEOmdiBmCP+pBBuijhzDQEyPyf8=
 			</data>
 			<key>hash2</key>
 			<data>
-			TWyYmJns0gU0JGjHk6lrLjiYvbQ81aT8VHIbUsYoBRc=
+			qVmxj/VCHH5REgr6AJbYAwZ635FjGjG4e9EoNQP8L+4=
 			</data>
 		</dict>
 		<key>Modules/QubitSDK.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			i3DGVe02OIx8fgFlrVcY8cGxN34=
+			kPOCiick1SMNFAH1PrgXwnf+th0=
 			</data>
 			<key>hash2</key>
 			<data>
-			gliBbIakjYzjd+zO0leCYbnellbKLSI6TsujIhkRaf0=
+			fN3lh2rfID6QZFMqRsStzvCn/S4oLrH2n2ZEGCXZG8I=
 			</data>
 		</dict>
 		<key>QBDataModel.momd/QBDataModel 2.mom</key>

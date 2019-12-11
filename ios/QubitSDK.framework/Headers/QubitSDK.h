@@ -250,6 +250,14 @@ SWIFT_CLASS("_TtC8QubitSDK18QBExperienceEntity")
 - (void)shown;
 @end
 
+
+SWIFT_CLASS("_TtC8QubitSDK26QBExperienceEntityCallback")
+@interface QBExperienceEntityCallback : NSObject
+- (void)shown;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 typedef SWIFT_ENUM(NSInteger, QBLogLevel, closed) {
   QBLogLevelDisabled = 0,
   QBLogLevelError = 1,
@@ -258,6 +266,11 @@ typedef SWIFT_ENUM(NSInteger, QBLogLevel, closed) {
   QBLogLevelVerbose = 4,
   QBLogLevelWarning = 5,
 };
+
+
+SWIFT_CLASS("_TtC8QubitSDK14QBLookupEntity")
+@interface QBLookupEntity : NSObject
+@end
 
 
 SWIFT_CLASS("_TtC8QubitSDK11QBMetaEvent")
@@ -310,6 +323,16 @@ SWIFT_CLASS("_TtC8QubitSDK8QubitSDK")
 /// \param logLevel QBLogLevel, default = .disabled
 ///
 + (void)startWithTrackingId:(NSString * _Nonnull)id logLevel:(enum QBLogLevel)logLevel;
+/// Pauses or resumes event tracking
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     enable: default: enabled
+///   </li>
+/// </ul>
++ (void)enable:(BOOL)enable;
 /// Send and event
 /// \param type eventType
 ///
@@ -356,6 +379,11 @@ SWIFT_CLASS("_TtC8QubitSDK8QubitSDK")
 /// \param variation variation of experience to return
 ///
 + (void)fetchExperiencesWithIds:(NSArray<NSNumber *> * _Nonnull)ids onSuccess:(void (^ _Nonnull)(NSArray<QBExperienceEntity *> * _Nonnull))onSuccess onError:(void (^ _Nonnull)(NSError * _Nonnull))onError preview:(BOOL)preview variation:(BOOL)ignoreSegments ignoreSegments:(NSNumber * _Nullable)variation;
+/// Fetch current lookup entity,
+///
+/// returns:
+/// nil if there is no lookup yet, entity otherwise
++ (QBLookupEntity * _Nullable)getLookupData SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
