@@ -24,7 +24,7 @@ RCT_EXTERN_METHOD(getExperiences:
                   isPreviewSet:(BOOL) isPreviewSet
                   preview:(BOOL) preview
                   isIgnoreSegmentsSet:(BOOL) isIgnoreSegmentsSet
-                  ignoreSegents:(BOOL) ignoreSegments
+                  ignoreSegments:(BOOL) ignoreSegments
                   resolver:(RCTPromiseResolveBlock) resolver
                   rejecter:(RCTPromiseRejectBlock) rejecter)
 RCT_EXTERN_METHOD(experienceShown:(NSString *) callback)
