@@ -22,13 +22,25 @@ class App extends PureComponent {
     QubitSDK.enable(mode);
   };
 
-  getTrackerId = async () => {
-    const id = await QubitSDK.getTrackingId();
-    Alert.alert(
-      'Tracker Id',
-      id
-    );
+  getDeviceId = async () => {
+    const devId = await QubitSDK.getDeviceId();
+    console.log(devId);
   };
+
+  getTrackerId = async () => {
+    const trackId = await QubitSDK.getTrackingId();
+    console.log(trackId);
+  };
+
+  getLookupData = async () => {
+    const lookupData = await QubitSDK.getLookupData();
+    console.log(lookupData);
+  };
+
+  getExperiences = async () => {
+    const exp = await QubitSDK.getExperiences();
+  };
+
 
   render() {
     return (
@@ -53,6 +65,21 @@ class App extends PureComponent {
           <TouchableOpacity onPress={this.getTrackerId}>
             <Text>
               Get tracker id
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.getDeviceId}>
+            <Text>
+              Get device id
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.getLookupData}>
+            <Text>
+              Get lookup data
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.getExperiences}>
+            <Text>
+              Get experiences
             </Text>
           </TouchableOpacity>
         </SafeAreaView>
