@@ -20,7 +20,9 @@ PODS:
     - glog
   - glog (0.3.5)
   - qubit-sdk-react-native (1.0.0):
+    - QubitSDK
     - React
+  - QubitSDK (1.0.4)
   - RCTRequired (0.61.4)
   - RCTTypeSafety (0.61.4):
     - FBLazyVector (= 0.61.4)
@@ -258,6 +260,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - boost-for-react-native
+    - QubitSDK
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -322,7 +325,8 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: 51477b84b1bf7ab6f9ef307c24e3dd675391be44
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
-  qubit-sdk-react-native: 997d20b7587580342c2f7fa63ac937a042de66b3
+  qubit-sdk-react-native: 13857e453c325d13e65fa00bbf0d865ec73d89be
+  QubitSDK: 4628349b7b4e172266438b72fa302809e5df55ee
   RCTRequired: f3b3fb6f4723e8e52facb229d0c75fdc76773849
   RCTTypeSafety: 2ec60de6abb1db050b56ecc4b60188026078fd10
   React: 10e0130b57e55a7cd8c3dee37c1261102ce295f4
