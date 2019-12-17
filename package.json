@@ -5,11 +5,11 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "prepublishOnly": "yarn run build-all",
+    "prepublish": "yarn build-prod",
     "build": "tsc",
-    "build-prod": "rm -rf dist && yarn run build && yarn run docs",
+    "build-prod": "rm -rf dist && yarn build && yarn docs",
     "docs": "documentation readme dist/** --section=\"API documentation\"",
-    "precommit": "yarn run build",
+    "precommit": "yarn build",
     "clean": "watchman watch-del-all && rm -rf package-lock.json && rm -rf node_modules && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && yarn"
   },
   "repository": {
