@@ -9,12 +9,12 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                   qubit-sdk-react-native
                    DESC
-  s.homepage     = "https://bitbucket.org/miquido/qubit-react-native-sdk/"
+  s.homepage     = "https://github.com/qubitdigital/qubit-sdk-react-native"
   s.license      = "MIT"
   # s.license    = { :type => "MIT", :file => "FILE_LICENSE" }
   s.authors      = { "Your Name" => "info@qubit.com" }
   s.platforms    = { :ios => "9.0", :tvos => "10.0" }
-  s.source       = { :git => "ssh://git@bitbucket.org/miquido/qubit-react-native-sdk.git", :tag => "#{s.version}" }
+  s.source       = { :git => "ssh://git@github.com:qubitdigital/qubit-sdk-react-native.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,swift}"
   s.requires_arc = true
