@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   # s.license    = { :type => "MIT", :file => "FILE_LICENSE" }
   s.authors      = { "Your Name" => "info@qubit.com" }
   s.platforms    = { :ios => "9.0", :tvos => "10.0" }
-  s.source       = { :git => "ssh://git@github.com:qubitdigital/qubit-sdk-react-native.git", :tag => "#{s.version}" }
+  s.source       = { :git => "git@github.com:qubitdigital/qubit-sdk-react-native.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,swift}"
   s.requires_arc = true

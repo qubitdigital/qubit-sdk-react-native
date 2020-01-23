@@ -38,9 +38,9 @@ class App extends PureComponent {
   };
 
   getExperiences = async () => {
-    const exp = await QubitSDK.getExperiences();
+    const exp = await QubitSDK.getExperiences([]);
+    exp.forEach(e => console.log(e));
   };
-
 
   render() {
     return (
