@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/miquido/qubit-react-native-sdk.git"
+    "url": "git+ssh://git@github.com:qubitdigital/qubit-sdk-react-native.git"
   },
   "keywords": [
     "react",
