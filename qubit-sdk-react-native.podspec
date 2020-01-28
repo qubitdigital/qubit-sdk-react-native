@@ -21,4 +21,5 @@ Pod::Spec.new do |s|
 
   s.dependency "React"
   s.dependency "QubitSDK"
+  s.swift_versions = ['4.0', '4.1', '4.2', '5.0']
 end
