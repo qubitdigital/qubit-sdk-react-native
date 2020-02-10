@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EB7E2FE1239E422600A8E3D3 /* QubitSDKModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7E2FE0239E422600A8E3D3 /* QubitSDKModule.swift */; };
-		EB7E2FE3239E43EC00A8E3D3 /* QBLogLevel+FromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7E2FE2239E43EC00A8E3D3 /* QBLogLevel+FromString.swift */; };
+		EB7E2FE3239E43EC00A8E3D3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7E2FE2239E43EC00A8E3D3 /* Utils.swift */; };
 		EB7E2FE5239E52A000A8E3D3 /* QubitSDKModule.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7E2FE4239E52A000A8E3D3 /* QubitSDKModule.m */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +28,7 @@
 		EB7E2E23239946CA00A8E3D3 /* libQubitSDKModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libQubitSDKModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB7E2FDF239E422600A8E3D3 /* QubitSDKModule-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QubitSDKModule-Bridging-Header.h"; sourceTree = "<group>"; };
 		EB7E2FE0239E422600A8E3D3 /* QubitSDKModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QubitSDKModule.swift; sourceTree = "<group>"; };
-		EB7E2FE2239E43EC00A8E3D3 /* QBLogLevel+FromString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QBLogLevel+FromString.swift"; sourceTree = "<group>"; };
+		EB7E2FE2239E43EC00A8E3D3 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		EB7E2FE4239E52A000A8E3D3 /* QubitSDKModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QubitSDKModule.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -88,7 +88,7 @@
 				EB7E2FE4239E52A000A8E3D3 /* QubitSDKModule.m */,
 				EB7E2FE0239E422600A8E3D3 /* QubitSDKModule.swift */,
 				EB7E2FDF239E422600A8E3D3 /* QubitSDKModule-Bridging-Header.h */,
-				EB7E2FE2239E43EC00A8E3D3 /* QBLogLevel+FromString.swift */,
+				EB7E2FE2239E43EC00A8E3D3 /* Utils.swift */,
 			);
 			path = QubitSDKModule;
 			sourceTree = "<group>";
@@ -154,7 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB7E2FE1239E422600A8E3D3 /* QubitSDKModule.swift in Sources */,
-				EB7E2FE3239E43EC00A8E3D3 /* QBLogLevel+FromString.swift in Sources */,
+				EB7E2FE3239E43EC00A8E3D3 /* Utils.swift in Sources */,
 				EB7E2FE5239E52A000A8E3D3 /* QubitSDKModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,10 +19,10 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - qubit-sdk-react-native (1.0.1):
+  - qubit-sdk-react-native (1.0.3):
     - QubitSDK
     - React
-  - QubitSDK (1.0.4)
+  - QubitSDK (1.0.6)
   - RCTRequired (0.61.4)
   - RCTTypeSafety (0.61.4):
     - FBLazyVector (= 0.61.4)
@@ -221,7 +221,7 @@ PODS:
     - React-cxxreact (= 0.61.4)
     - React-jsi (= 0.61.4)
     - ReactCommon/jscallinvoker (= 0.61.4)
-  - RNCAsyncStorage (1.7.1):
+  - RNCAsyncStorage (1.6.3):
     - React
   - Yoga (1.14.0)
 
@@ -231,7 +231,7 @@ DEPENDENCIES:
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
-  - qubit-sdk-react-native (from `../..`)
+  - qubit-sdk-react-native (from `../node_modules/qubit-sdk-react-native`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - React (from `../node_modules/react-native/`)
@@ -274,7 +274,7 @@ EXTERNAL SOURCES:
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   qubit-sdk-react-native:
-    :path: "../.."
+    :path: "../node_modules/qubit-sdk-react-native"
   RCTRequired:
     :path: "../node_modules/react-native/Libraries/RCTRequired"
   RCTTypeSafety:
@@ -325,8 +325,8 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: 51477b84b1bf7ab6f9ef307c24e3dd675391be44
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
-  qubit-sdk-react-native: d7bce70ed26f09efe936a8cd0d481aa49587ff04
-  QubitSDK: 4628349b7b4e172266438b72fa302809e5df55ee
+  qubit-sdk-react-native: ba767b50462c6878afcf4486c68bfa84d06cecd9
+  QubitSDK: e62c2c7724443d82808fb7bf7adde815ec3f5959
   RCTRequired: f3b3fb6f4723e8e52facb229d0c75fdc76773849
   RCTTypeSafety: 2ec60de6abb1db050b56ecc4b60188026078fd10
   React: 10e0130b57e55a7cd8c3dee37c1261102ce295f4
@@ -346,9 +346,9 @@ SPEC CHECKSUMS:
   React-RCTText: 21934e0a51d522abcd0a275407e80af45d6fd9ec
   React-RCTVibration: 0f76400ee3cec6edb9c125da49fed279340d145a
   ReactCommon: a6a294e7028ed67b926d29551aa9394fd989c24c
-  RNCAsyncStorage: 8539fc80a0075fcc9c8e2dff84cd22dc5bf1dacf
+  RNCAsyncStorage: 3c304d1adfaea02ec732ac218801cb13897aa8c0
   Yoga: ba3d99dbee6c15ea6bbe3783d1f0cb1ffb79af0f
 
 PODFILE CHECKSUM: 1049a540a8eb1a710351d44c5af06db81e8fe54a
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.8.0

@@ -43,13 +43,13 @@ class QubitSDKModule: NSObject {
             rejecter("Error", "QubitModuleSDK: getLookupData returned nil; probably no lookup data yet", nil)
             return
         }
-        resolver(lookup)
+        resolver(lookup.dictionary)
     }
     
     @objc(getExperiences:isVariationSet:variation:isPreviewSet:preview:isIgnoreSegmentsSet:ignoreSegments:resolver:rejecter:)
     func getExperiences(experienceIds: [Int], isVariationSet: Bool, variation: Int, isPreviewSet: Bool, preview: Bool, isIgnoreSegmentsSet: Bool, ignoreSegments: Bool,  resolver: @escaping RCTPromiseResolveBlock, rejecter: @escaping RCTPromiseRejectBlock) {
         QubitSDK.fetchExperiences(withIds: experienceIds, onSuccess: { result in
-            resolver(result)
+            resolver(result.map({ $0.asDictionary }))
         }, onError: { error in
             rejecter("Error", "QubitSDKModule: getExperiences failed.", error)
         }, preview: isPreviewSet ? preview : false,
