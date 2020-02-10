@@ -32,10 +32,7 @@ public class WritableMapConverter {
           map.putString(key, primitiveValue.getAsString());
         } else if (primitiveValue.isNumber()) {
           Number number = primitiveValue.getAsNumber();
-          if (number instanceof Integer
-              || number instanceof Long
-              || number instanceof Short
-              || number instanceof BigInteger) {
+          if (number instanceof Integer || number instanceof Short) {
             map.putInt(key, number.intValue());
           } else {
             map.putDouble(key, number.doubleValue());
@@ -68,10 +65,7 @@ public class WritableMapConverter {
           array.pushString(primitiveValue.getAsString());
         } else if (primitiveValue.isNumber()) {
           Number number = primitiveValue.getAsNumber();
-          if (number instanceof Integer
-              || number instanceof Long
-              || number instanceof Short
-              || number instanceof BigInteger) {
+          if (number instanceof Integer || number instanceof Short) {
             array.pushInt(number.intValue());
           } else {
             array.pushDouble(number.doubleValue());
