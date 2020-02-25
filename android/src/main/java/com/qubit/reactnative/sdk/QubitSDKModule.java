@@ -44,11 +44,15 @@ public class QubitSDKModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void init(String trackingId, String logLevel) {
     QBLogLevel qbLogLevel = parseLogLevel(logLevel);
-    QubitSDK.initialization()
-        .inAppContext(reactContext)
-        .withTrackingId(trackingId)
-        .withLogLevel(qbLogLevel)
-        .start();
+    try {
+      QubitSDK.initialization()
+          .inAppContext(reactContext)
+          .withTrackingId(trackingId)
+          .withLogLevel(qbLogLevel)
+          .start();
+    } catch (Exception e) {
+      Log.w("Bridge", "Exception occurred during sdk initialization: " + e.getMessage());
+    }
   }
 
   @ReactMethod
