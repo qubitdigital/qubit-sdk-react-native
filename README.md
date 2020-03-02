@@ -6,11 +6,13 @@ Installation of the QubitSDK, to provide event tracking and lookup. To make use 
 
 ### Installation
 
-`$ npm install qubit-sdk-react-native --save`
+1. `$ npm install qubit-sdk-react-native --save`
 or
 `$ yarn add qubit-sdk-react-native`
 
-For React Native &lt; 0.60 you are supposed to link the library.
+2. Navigate to your `/ios` directory and run `pod install` to ensure the `QubitSDK` CocoaPod is installed. Android should require no further installation.
+
+Optional - if you are using React Native &lt; 0.60, you must `link` the library.
 
 `$ react-native link qubit-sdk-react-native`
 
