@@ -11,7 +11,7 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		C151B15DB104907C59A2B7E2 /* libPods-qubitsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD7FA89AA402F67985663FC /* libPods-qubitsdk.a */; };
+		8C1C3503DAA95729D80A2D74 /* libPods-qubitsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E91AF56B0EEB07F5A599A9AA /* libPods-qubitsdk.a */; };
 		EB7E2FEA239FCD4C00A8E3D3 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7E2FE9239FCD4C00A8E3D3 /* Stub.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,9 +24,9 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = qubitsdk/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = qubitsdk/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = qubitsdk/main.m; sourceTree = "<group>"; };
-		2660AC49F08C126EF620CE41 /* Pods-qubitsdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qubitsdk.debug.xcconfig"; path = "Target Support Files/Pods-qubitsdk/Pods-qubitsdk.debug.xcconfig"; sourceTree = "<group>"; };
-		6CCF31A069339B8C6CCB9C85 /* Pods-qubitsdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qubitsdk.release.xcconfig"; path = "Target Support Files/Pods-qubitsdk/Pods-qubitsdk.release.xcconfig"; sourceTree = "<group>"; };
-		DBD7FA89AA402F67985663FC /* libPods-qubitsdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qubitsdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		791E65EF4E9E1EF18EB8E1AE /* Pods-qubitsdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qubitsdk.debug.xcconfig"; path = "Target Support Files/Pods-qubitsdk/Pods-qubitsdk.debug.xcconfig"; sourceTree = "<group>"; };
+		9B0E76971EE2B96AD84C36A4 /* Pods-qubitsdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qubitsdk.release.xcconfig"; path = "Target Support Files/Pods-qubitsdk/Pods-qubitsdk.release.xcconfig"; sourceTree = "<group>"; };
+		E91AF56B0EEB07F5A599A9AA /* libPods-qubitsdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qubitsdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB7E2FE8239FCD4C00A8E3D3 /* qubitsdk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "qubitsdk-Bridging-Header.h"; sourceTree = "<group>"; };
 		EB7E2FE9239FCD4C00A8E3D3 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -38,7 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C151B15DB104907C59A2B7E2 /* libPods-qubitsdk.a in Frameworks */,
+				8C1C3503DAA95729D80A2D74 /* libPods-qubitsdk.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,8 +64,8 @@
 		1BA0FC2F58469D5F2E01D191 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2660AC49F08C126EF620CE41 /* Pods-qubitsdk.debug.xcconfig */,
-				6CCF31A069339B8C6CCB9C85 /* Pods-qubitsdk.release.xcconfig */,
+				791E65EF4E9E1EF18EB8E1AE /* Pods-qubitsdk.debug.xcconfig */,
+				9B0E76971EE2B96AD84C36A4 /* Pods-qubitsdk.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -75,7 +75,7 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				DBD7FA89AA402F67985663FC /* libPods-qubitsdk.a */,
+				E91AF56B0EEB07F5A599A9AA /* libPods-qubitsdk.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -116,13 +116,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "qubitsdk" */;
 			buildPhases = (
-				564AFA96E986FB191E539761 /* [CP] Check Pods Manifest.lock */,
+				B2E705AE33FEB5211C43E2FE /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				8CBEEED67AF303461991A8BC /* [CP] Copy Pods Resources */,
+				B8414A7F9CCE6E6C2B9CD42D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,7 +192,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		564AFA96E986FB191E539761 /* [CP] Check Pods Manifest.lock */ = {
+		B2E705AE33FEB5211C43E2FE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -214,7 +214,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8CBEEED67AF303461991A8BC /* [CP] Copy Pods Resources */ = {
+		B8414A7F9CCE6E6C2B9CD42D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -281,7 +281,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2660AC49F08C126EF620CE41 /* Pods-qubitsdk.debug.xcconfig */;
+			baseConfigurationReference = 791E65EF4E9E1EF18EB8E1AE /* Pods-qubitsdk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -305,7 +305,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6CCF31A069339B8C6CCB9C85 /* Pods-qubitsdk.release.xcconfig */;
+			baseConfigurationReference = 9B0E76971EE2B96AD84C36A4 /* Pods-qubitsdk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
