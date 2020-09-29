@@ -28,5 +28,15 @@ RCT_EXTERN_METHOD(getExperiences:
                   resolver:(RCTPromiseResolveBlock) resolver
                   rejecter:(RCTPromiseRejectBlock) rejecter)
 RCT_EXTERN_METHOD(experienceShown:(NSString *) callback)
+RCT_EXTERN_METHOD(getPlacement:
+                  (NSString *) placementId
+                  mode:(NSString *) mode
+                  attributes:(NSString *) attributes
+                  campaignId:(NSString *) campaignId
+                  experienceId:(NSString *) experienceId
+                  resolver:(RCTPromiseResolveBlock) resolver
+                  rejecter:(RCTPromiseRejectBlock) rejecter)
+RCT_EXTERN_METHOD(placementImpression:(NSString *) callback)
+RCT_EXTERN_METHOD(placementClickthrough:(NSString *) callback)
 
 @end
