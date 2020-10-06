@@ -61,6 +61,21 @@ class QubitSDKModule: NSObject {
     func experienceShown(callback: String) {
         QBExperienceEntityCallback(callback: callback).shown()
     }
+
+    @objc(getPlacement:mode:attributes:campaignId:experienceId:resolveVisitorState:resolver:rejecter:)
+    func getPlacement(placementId: String, mode: String, attributes: [String: Any], campaignId: String, experienceId: String, resolveVisitorState: Bool, resolver: @escaping RCTPromiseResolveBlock, rejecter: @escaping RCTPromiseRejectBlock) {
+        QubitSDK.getPlacement(with: getPlacement,
+                              mode: mode,
+                              attributes: attributes,
+                              campaignId: campaignId,
+                              experienceId: experienceId,
+                              resolveVisitorState: resolveVisitorState,
+                              onSuccess: { result in
+                                resolver(result.map( {$0.asDictionary} ))
+                              }, onError: {
+                                rejecter("Error", "QubitSDKModule: getPlacement failed.", error)
+                              })
+    }
     
     @objc
     static func requiresMainQueueSetup() -> Bool {
