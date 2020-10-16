@@ -214,6 +214,53 @@ async () => {
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Experience>>** Promise with an array of Experience objects.
 
+#### getPlacement
+
+Returns Placement for given parameters.
+
+##### Parameters
+
+-   `placementId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Unique ID of the placement.
+-   `mode` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The mode to fetch placements content with, can be one of LIVE/SAMPLE/PREVIEW. Defaults to LIVE.
+-   `attributes` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** JSON string containing custom attributes to be used to query for the placement. "visitor" attribute will be ignored as it is set by SDK.
+-   `campaignId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Optional.
+-   `experienceId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Optional.
+-   `placementPromise` **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Placement>** Promise with query result.
+
+
+##### Example
+
+```javascript
+async () => {
+ const placement = await getPlacement(
+ 	"placement_id",
+ 	"LIVE",
+ 	"{ \"color\": \"blue\"}",
+ 	"campaign_id",
+ 	"experience_id"
+ );
+ ...
+}
+
+{
+  "data": {
+    "placementContent": {
+      "content": {
+        "image": "https://image.store.com/images/example.jpeg",
+        "message": "Hello World",
+        "url": "https://www.qubit.com"
+      },
+      "callbacks": {
+        "impression": "https://api.qubit.com/placements/callback?data=ggW4eyJtZXRhIjp7ImlkIjo",
+        "clickthrough": "https://api.qubit.com/placements/callback?data=mQW4eyJtZXRhIjp7Imlkx"
+      }
+    }
+  }
+}
+```
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Placement>** with a map describing Placement object.
+
 ### Compatibility
 
 Qubit SDK React Native is compatible with React Native 0.58 and higher

@@ -1,7 +1,7 @@
 package com.qubit.reactnative.sdk;
 
 import android.util.Log;
-import androidx.annotation.NonNull;
+
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -12,17 +12,23 @@ import com.facebook.react.bridge.WritableMap;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.qubit.android.sdk.api.QubitSDK;
 import com.qubit.android.sdk.api.logging.QBLogLevel;
+import com.qubit.android.sdk.api.placement.PlacementMode;
+import com.qubit.android.sdk.api.placement.PlacementPreviewOptions;
 import com.qubit.android.sdk.api.tracker.event.QBEvent;
 import com.qubit.android.sdk.api.tracker.event.QBEvents;
 import com.qubit.android.sdk.internal.experience.Experience;
-import com.qubit.android.sdk.internal.experience.callback.CallbackConnector;
-import com.qubit.android.sdk.internal.experience.callback.CallbackConnectorImpl;
+import com.qubit.android.sdk.internal.experience.callback.ExperienceCallbackConnector;
+import com.qubit.android.sdk.internal.experience.callback.ExperienceCallbackConnectorImpl;
 import com.qubit.android.sdk.internal.experience.model.ExperiencePayload;
 import com.qubit.android.sdk.internal.lookup.LookupData;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 
 public class QubitSDKModule extends ReactContextBaseJavaModule {
@@ -139,10 +145,55 @@ public class QubitSDKModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void experienceShown(String callback) {
-    CallbackConnector callbackConnector = new CallbackConnectorImpl(callback, QubitSDK.getDeviceId());
+    ExperienceCallbackConnector callbackConnector = new ExperienceCallbackConnectorImpl(callback, QubitSDK.getDeviceId());
     callbackConnector.shown();
   }
 
+  @ReactMethod
+  public void getPlacement(
+      String placementId,
+      String mode,
+      String attributes,
+      String campaignId,
+      String experienceId,
+      Promise placementPromise
+  ) {
+    QubitSDK.getPlacement(
+        placementId,
+        matchMode(mode),
+        getAttributesJson(attributes),
+        new PlacementPreviewOptions(campaignId, experienceId),
+        placement -> {
+          WritableMap placementContentMap = WritableMapConverter.convertJsonToMap(placement.getContent());
+          placementPromise.resolve(placementContentMap);
+          return null;
+        },
+        throwable -> {
+          placementPromise.reject(throwable);
+          return null;
+        }
+    );
+  }
+
+  private PlacementMode matchMode(String value) {
+    switch (value) {
+      case "SAMPLE":
+        return PlacementMode.SAMPLE;
+      case "PREVIEW":
+        return PlacementMode.PREVIEW;
+      case "LIVE":
+      default:
+        return PlacementMode.LIVE;
+    }
+  }
+
+  private JsonObject getAttributesJson(String attributes) {
+    try {
+      return new JsonParser().parse(attributes).getAsJsonObject();
+    } catch (Exception e) {
+      return null;
+    }
+  }
 
   private static QBLogLevel defaultLogLevel = QBLogLevel.WARN;
 
@@ -150,7 +201,7 @@ public class QubitSDKModule extends ReactContextBaseJavaModule {
     if (logLevel == null || logLevel.isEmpty()) {
       return defaultLogLevel;
     }
-    for(QBLogLevel level : QBLogLevel.values()) {
+    for (QBLogLevel level : QBLogLevel.values()) {
       if (level.toString().equalsIgnoreCase(logLevel))
         return level;
     }
