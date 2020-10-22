@@ -16,8 +16,14 @@ type Experience = {
     isControl: boolean,
     id: number,
     callback: string,
-    variation: number
+    variation: number,
     shown: () => void
+}
+
+type Placement = {
+    content: object,
+    impression: () => void,
+    clickthrough: () => void
 }
 
 class QubitSDK {
@@ -183,8 +189,32 @@ class QubitSDK {
             !(ignoreSegments == null),
             ignoreSegments || false
         )
-            .then(experiences => experiences.map(e => ({...e, shown: () => { NativeModules.QubitSDK.experienceShown(e.callback || '')} })))
+            .then(experiences => experiences.map(e => ({
+                ...e, 
+                shown: () => { NativeModules.QubitSDK.experienceShown(e.callback || '') } 
+            })))
     }
-}
+
+
+    public getPlacement(
+        placementId: string,
+        mode?: string,
+        attributes?: string,
+        campaignId?: string,
+        experienceId?: string
+    ) : Promise<Placement> {
+        return NativeModules.QubitSDK.getPlacement(
+            placementId,
+            mode,
+            attributes,
+            campaignId,
+            experienceId
+        )
+             .then(placement => ({
+                ...placement,
+                impression: () => { NativeModules.QubitSDK.placementImpression(placement.impression || '') },
+                clickthrough: () => { NativeModules.QubitSDK.placementClickthrough(placement.clickthrough || '') }
+            }))
+    }
 
 export default new QubitSDK();

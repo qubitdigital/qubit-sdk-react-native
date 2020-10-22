@@ -42,6 +42,17 @@ class App extends PureComponent {
     exp.forEach(e => console.log(e));
   };
 
+  getPlacement = async () => {
+    const placement = await QubitSDK.getPlacement(
+        "tsOujouCSSKJGSCMUsmQRw",
+        "LIVE",
+        null,
+        "1ybrhki9RvKWpA-9veLQSg",
+        null
+    );
+    console.log(placement);
+  };
+
   render() {
     return (
       <>
@@ -80,6 +91,11 @@ class App extends PureComponent {
           <TouchableOpacity onPress={this.getExperiences}>
             <Text>
               Get experiences
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.getPlacement}>
+            <Text>
+              Get placement
             </Text>
           </TouchableOpacity>
         </SafeAreaView>
