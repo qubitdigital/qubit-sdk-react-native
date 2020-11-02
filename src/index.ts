@@ -195,7 +195,35 @@ class QubitSDK {
             })))
     }
 
-
+    /**
+     * Returns Placement for given parameters.
+     * @param {string} placementId Unique ID of the placement.
+     * @param {string} [mode] The mode to fetch placements content with, can be one of LIVE/SAMPLE/PREVIEW. Defaults to LIVE.
+     * @param {string} [attributes] JSON string containing custom attributes to be used to query for the placement. "visitor" attribute will be ignored as it is set by SDK.
+     * @param {string} [campaignId] Optional.
+     * @param {string} [experienceId] Optional.
+     * @returns {Promise<Placement>} Promise with an object describing Placement object.
+     * @example
+     *
+     * async () => {
+     *  const placement = await getPlacement(
+     *      "placement_id",
+     *  	"LIVE",
+     *  	"{ \"color\": \"blue\"}",
+     *  	"campaign_id",
+     *  	"experience_id"
+     *  );
+     *  ...
+     * }
+     *
+     * {
+     *   "image": "https://image.store.com/images/example.jpeg",
+     *   "message": "Hello World",
+     *   "url": "https://www.qubit.com"
+     *   "impressionUrl": "https://api.qubit.com/placements/callback?data=ggW4eyJtZXRhIjp7ImlkIjo",
+     *   "clickthroughUrl": "https://api.qubit.com/placements/callback?data=mQW4eyJtZXRhIjp7Imlkx"
+     * }
+     */
     public getPlacement(
         placementId: string,
         mode?: string,
@@ -212,9 +240,10 @@ class QubitSDK {
         )
              .then(placement => ({
                 ...placement,
-                impression: () => { NativeModules.QubitSDK.placementImpression(placement.impression || '') },
-                clickthrough: () => { NativeModules.QubitSDK.placementClickthrough(placement.clickthrough || '') }
+                impression: () => { NativeModules.QubitSDK.placementImpression(placement.impressionUrl || '') },
+                clickthrough: () => { NativeModules.QubitSDK.placementClickthrough(placement.clickthroughUrl || '') }
             }))
     }
+}
 
 export default new QubitSDK();

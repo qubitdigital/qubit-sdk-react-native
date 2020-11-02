@@ -8,6 +8,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -170,8 +171,10 @@ public class QubitSDKModule extends ReactContextBaseJavaModule {
         getAttributesJson(attributes),
         new PlacementPreviewOptions(campaignId, experienceId),
         placement -> {
-          WritableMap placementContentMap = WritableMapConverter.convertJsonToMap(placement.getContent());
-          placementPromise.resolve(placementContentMap);
+          JsonObject placementJson = placement.getContent();
+          placementJson.addProperty("impressionUrl", placement.getImpressionUrl());
+          placementJson.addProperty("clickthroughUrl", placement.getClickthroughUrl());
+          placementPromise.resolve(WritableMapConverter.convertJsonToMap(placementJson));
           return null;
         },
         throwable -> {
@@ -186,7 +189,7 @@ public class QubitSDKModule extends ReactContextBaseJavaModule {
     PlacementCallbackConnector callbackConnector = new PlacementCallbackConnectorImpl(
         getCallbackRequestTracker(),
         callbackUrl,
-        null
+        ""
     );
     callbackConnector.impression();
   }
@@ -195,7 +198,7 @@ public class QubitSDKModule extends ReactContextBaseJavaModule {
   public void placementClickthrough(String callbackUrl) {
     PlacementCallbackConnector callbackConnector = new PlacementCallbackConnectorImpl(
         getCallbackRequestTracker(),
-        null,
+        "",
         callbackUrl
     );
     callbackConnector.clickthrough();
