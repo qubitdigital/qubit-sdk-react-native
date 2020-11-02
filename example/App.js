@@ -51,6 +51,7 @@ class App extends PureComponent {
         null
     );
     console.log(placement);
+    placement.impression();
   };
 
   render() {

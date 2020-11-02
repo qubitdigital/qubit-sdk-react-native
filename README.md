@@ -6,11 +6,11 @@ Installation of the QubitSDK, to provide event tracking and lookup. To make use 
 
 ### Installation
 
-1. `$ npm install qubit-sdk-react-native --save`
-or
-`$ yarn add qubit-sdk-react-native`
+1.  `$ npm install qubit-sdk-react-native --save`
+    or
+    `$ yarn add qubit-sdk-react-native`
 
-2. Navigate to your `/ios` directory and run `pod install` to ensure the `QubitSDK` CocoaPod is installed. Android should require no further installation.
+2.  Navigate to your `/ios` directory and run `pod install` to ensure the `QubitSDK` CocoaPod is installed. Android should require no further installation.
 
 Optional - if you are using React Native &lt; 0.60, you must `link` the library.
 
@@ -54,6 +54,9 @@ and send first event
 -   [getExperiences](#getexperiences)
     -   [Parameters](#parameters-3)
     -   [Examples](#examples-6)
+-   [getPlacement](#getplacement)
+    -   [Parameters](#parameters-4)
+    -   [Examples](#examples-7)
 
 #### start
 
@@ -221,45 +224,39 @@ Returns Placement for given parameters.
 ##### Parameters
 
 -   `placementId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Unique ID of the placement.
--   `mode` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The mode to fetch placements content with, can be one of LIVE/SAMPLE/PREVIEW. Defaults to LIVE.
--   `attributes` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** JSON string containing custom attributes to be used to query for the placement. "visitor" attribute will be ignored as it is set by SDK.
+-   `mode` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** The mode to fetch placements content with, can be one of LIVE/SAMPLE/PREVIEW. Defaults to LIVE.
+-   `attributes` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** JSON string containing custom attributes to be used to query for the placement. "visitor" attribute will be ignored as it is set by SDK.
 -   `campaignId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Optional.
 -   `experienceId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Optional.
--   `placementPromise` **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Placement>** Promise with query result.
 
-
-##### Example
+##### Examples
 
 ```javascript
 async () => {
- const placement = await getPlacement(
- 	"placement_id",
- 	"LIVE",
- 	"{ \"color\": \"blue\"}",
- 	"campaign_id",
- 	"experience_id"
- );
- ...
+  const placement = await getPlacement(
+    "placement_id",
+ 	 "LIVE",
+ 	 "{ \"color\": \"blue\"}",
+ 	 "campaign_id",
+ 	 "experience_id"
+  );
+ 
+  placement.impression();
+  ...
+  placement.clickthrough();
+  ...
 }
 
 {
-  "data": {
-    "placementContent": {
-      "content": {
-        "image": "https://image.store.com/images/example.jpeg",
-        "message": "Hello World",
-        "url": "https://www.qubit.com"
-      },
-      "callbacks": {
-        "impression": "https://api.qubit.com/placements/callback?data=ggW4eyJtZXRhIjp7ImlkIjo",
-        "clickthrough": "https://api.qubit.com/placements/callback?data=mQW4eyJtZXRhIjp7Imlkx"
-      }
-    }
-  }
+  "image": "https://image.store.com/images/example.jpeg",
+  "message": "Hello World",
+  "url": "https://www.qubit.com"
+  "impressionUrl": "https://api.qubit.com/placements/callback?data=ggW4eyJtZXRhIjp7ImlkIjo",
+  "clickthroughUrl": "https://api.qubit.com/placements/callback?data=mQW4eyJtZXRhIjp7Imlkx"
 }
 ```
 
-Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Placement>** with a map describing Placement object.
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Placement>** Promise with an object describing Placement object.
 
 ### Compatibility
 
