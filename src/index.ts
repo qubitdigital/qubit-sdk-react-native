@@ -21,7 +21,11 @@ type Experience = {
 }
 
 type Placement = {
-    content: object,
+    url: string,
+    message: string,
+    image: string,
+    impressionUrl: string,
+    clickthroughUrl: string,
     impression: () => void,
     clickthrough: () => void
 }

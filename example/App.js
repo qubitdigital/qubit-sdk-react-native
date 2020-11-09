@@ -54,6 +54,28 @@ class App extends PureComponent {
     placement.impression();
   };
 
+  sendPlacementImpression = async () => {
+      const placement = await QubitSDK.getPlacement(
+          "tsOujouCSSKJGSCMUsmQRw",
+          "LIVE",
+          null,
+          "1ybrhki9RvKWpA-9veLQSg",
+          null
+      );
+      placement.impression();
+    };
+
+  sendPlacementClickthrough = async () => {
+        const placement = await QubitSDK.getPlacement(
+            "tsOujouCSSKJGSCMUsmQRw",
+            "LIVE",
+            null,
+            "1ybrhki9RvKWpA-9veLQSg",
+            null
+        );
+        placement.clickthrough();
+      };
+
   render() {
     return (
       <>
@@ -97,6 +119,16 @@ class App extends PureComponent {
           <TouchableOpacity onPress={this.getPlacement}>
             <Text>
               Get placement
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.sendPlacementImpression}>
+            <Text>
+              Send placement impression callback
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.sendPlacementClickthrough}>
+            <Text>
+              Send placement clickthrough callback
             </Text>
           </TouchableOpacity>
         </SafeAreaView>

@@ -8,7 +8,6 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -21,15 +20,11 @@ import com.qubit.android.sdk.api.placement.PlacementMode;
 import com.qubit.android.sdk.api.placement.PlacementPreviewOptions;
 import com.qubit.android.sdk.api.tracker.event.QBEvent;
 import com.qubit.android.sdk.api.tracker.event.QBEvents;
-import com.qubit.android.sdk.internal.callbacktracker.CallbackRequestTracker;
-import com.qubit.android.sdk.internal.callbacktracker.CallbackRequestTrackerImpl;
-import com.qubit.android.sdk.internal.callbacktracker.repository.CallbackRequestRepositoryImpl;
 import com.qubit.android.sdk.internal.experience.Experience;
 import com.qubit.android.sdk.internal.experience.callback.ExperienceCallbackConnector;
 import com.qubit.android.sdk.internal.experience.callback.ExperienceCallbackConnectorImpl;
 import com.qubit.android.sdk.internal.experience.model.ExperiencePayload;
 import com.qubit.android.sdk.internal.lookup.LookupData;
-import com.qubit.android.sdk.internal.network.NetworkStateServiceImpl;
 import com.qubit.android.sdk.internal.placement.callback.PlacementCallbackConnectorImpl;
 
 import java.util.ArrayList;
@@ -187,7 +182,7 @@ public class QubitSDKModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void placementImpression(String callbackUrl) {
     PlacementCallbackConnector callbackConnector = new PlacementCallbackConnectorImpl(
-        getCallbackRequestTracker(),
+        QubitSDK.getCallbackRequestTracker(),
         callbackUrl,
         ""
     );
@@ -197,18 +192,11 @@ public class QubitSDKModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void placementClickthrough(String callbackUrl) {
     PlacementCallbackConnector callbackConnector = new PlacementCallbackConnectorImpl(
-        getCallbackRequestTracker(),
+        QubitSDK.getCallbackRequestTracker(),
         "",
         callbackUrl
     );
     callbackConnector.clickthrough();
-  }
-
-  private CallbackRequestTracker getCallbackRequestTracker() {
-    return new CallbackRequestTrackerImpl(
-        new NetworkStateServiceImpl(reactContext),
-        new CallbackRequestRepositoryImpl(reactContext)
-    );
   }
 
   private PlacementMode matchMode(String value) {
