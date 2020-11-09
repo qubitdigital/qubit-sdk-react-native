@@ -233,18 +233,14 @@ Returns Placement for given parameters.
 
 ```javascript
 async () => {
-  const placement = await getPlacement(
-    "placement_id",
- 	 "LIVE",
- 	 "{ \"color\": \"blue\"}",
- 	 "campaign_id",
- 	 "experience_id"
-  );
- 
-  placement.impression();
-  ...
-  placement.clickthrough();
-  ...
+ const placement = await getPlacement(
+     "placement_id",
+ 	"LIVE",
+ 	"{ \"color\": \"blue\"}",
+ 	"campaign_id",
+ 	"experience_id"
+ );
+ ...
 }
 
 {

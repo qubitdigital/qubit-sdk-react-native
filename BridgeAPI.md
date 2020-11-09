@@ -325,10 +325,6 @@ Returns Placement for given parameters.
     - Type: String
     - Constraints: Nullable
     - Description: Experience identifier
-- placementPromise
-    - Type: Promise
-    - Constraints: Not null
-    - Description: Promise with query result
 
 ### Result
 Promise with a map describing Placement object. Example:
