@@ -21,11 +21,7 @@ type Experience = {
 }
 
 type Placement = {
-    url: string,
-    message: string,
-    image: string,
-    impressionUrl: string,
-    clickthroughUrl: string,
+    content: object,
     impression: () => void,
     clickthrough: () => void
 }
@@ -218,6 +214,9 @@ class QubitSDK {
      *  	"experience_id"
      *  );
      *  ...
+     *  placement.impression();
+     *  ...
+     *  placement.clickthrough();
      * }
      *
      * {

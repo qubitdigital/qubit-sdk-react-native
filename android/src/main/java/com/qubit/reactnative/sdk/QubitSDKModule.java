@@ -15,7 +15,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.qubit.android.sdk.api.QubitSDK;
 import com.qubit.android.sdk.api.logging.QBLogLevel;
-import com.qubit.android.sdk.api.placement.PlacementCallbackConnector;
 import com.qubit.android.sdk.api.placement.PlacementMode;
 import com.qubit.android.sdk.api.placement.PlacementPreviewOptions;
 import com.qubit.android.sdk.api.tracker.event.QBEvent;
@@ -25,7 +24,6 @@ import com.qubit.android.sdk.internal.experience.callback.ExperienceCallbackConn
 import com.qubit.android.sdk.internal.experience.callback.ExperienceCallbackConnectorImpl;
 import com.qubit.android.sdk.internal.experience.model.ExperiencePayload;
 import com.qubit.android.sdk.internal.lookup.LookupData;
-import com.qubit.android.sdk.internal.placement.callback.PlacementCallbackConnectorImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -181,22 +179,12 @@ public class QubitSDKModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void placementImpression(String callbackUrl) {
-    PlacementCallbackConnector callbackConnector = new PlacementCallbackConnectorImpl(
-        QubitSDK.getCallbackRequestTracker(),
-        callbackUrl,
-        ""
-    );
-    callbackConnector.impression();
+    QubitSDK.sendCallbackRequest(callbackUrl);
   }
 
   @ReactMethod
   public void placementClickthrough(String callbackUrl) {
-    PlacementCallbackConnector callbackConnector = new PlacementCallbackConnectorImpl(
-        QubitSDK.getCallbackRequestTracker(),
-        "",
-        callbackUrl
-    );
-    callbackConnector.clickthrough();
+    QubitSDK.sendCallbackRequest(callbackUrl);
   }
 
   private PlacementMode matchMode(String value) {

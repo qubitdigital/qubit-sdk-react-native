@@ -241,6 +241,9 @@ async () => {
  	"experience_id"
  );
  ...
+ placement.impression();
+ ...
+ placement.clickthrough();
 }
 
 {
