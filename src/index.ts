@@ -220,11 +220,7 @@ class QubitSDK {
      * }
      *
      * {
-     *   "image": "https://image.store.com/images/example.jpeg",
-     *   "message": "Hello World",
-     *   "url": "https://www.qubit.com"
-     *   "impressionUrl": "https://api.qubit.com/placements/callback?data=ggW4eyJtZXRhIjp7ImlkIjo",
-     *   "clickthroughUrl": "https://api.qubit.com/placements/callback?data=mQW4eyJtZXRhIjp7Imlkx"
+     *   "content": { ... }
      * }
      */
     public getPlacement(
@@ -242,7 +238,7 @@ class QubitSDK {
             experienceId
         )
              .then(placement => ({
-                ...placement,
+                content: placement.content,
                 impression: () => { NativeModules.QubitSDK.placementImpression(placement.impressionUrl || '') },
                 clickthrough: () => { NativeModules.QubitSDK.placementClickthrough(placement.clickthroughUrl || '') }
             }))

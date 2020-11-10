@@ -247,11 +247,7 @@ async () => {
 }
 
 {
-  "image": "https://image.store.com/images/example.jpeg",
-  "message": "Hello World",
-  "url": "https://www.qubit.com"
-  "impressionUrl": "https://api.qubit.com/placements/callback?data=ggW4eyJtZXRhIjp7ImlkIjo",
-  "clickthroughUrl": "https://api.qubit.com/placements/callback?data=mQW4eyJtZXRhIjp7Imlkx"
+  "content": { ... }
 }
 ```
 

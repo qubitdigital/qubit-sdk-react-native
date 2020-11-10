@@ -327,16 +327,14 @@ Returns Placement for given parameters.
     - Description: Experience identifier
 
 ### Result
-Promise with a map describing Placement object. Example:
+Promise with a map describing Placement object:
     
      {
-        "image": "https://image.store.com/images/example.jpeg",
-        "message": "Hello World",
-        "url": "https://www.qubit.com"
+        "content": { ... }
         "impressionUrl": "https://api.qubit.com/placements/callback?data=ggW4eyJtZXRhIjp7ImlkIjo",
         "clickthroughUrl": "https://api.qubit.com/placements/callback?data=mQW4eyJtZXRhIjp7Imlkx"
      }
-
+The structure of response content depends on the type of placement that is being called.
 
 ### Exceptions
 - Exception is thrown, when SDK is not initialized.
