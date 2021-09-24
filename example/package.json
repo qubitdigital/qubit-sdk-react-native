@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.6.3",
-    "qubit-sdk-react-native": "file:..",
+    "qubit-sdk-react-native": "1.0.9",
     "react": "16.9.0",
     "react-native": "0.61.4"
   },
