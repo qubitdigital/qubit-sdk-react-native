@@ -70,7 +70,7 @@ class QubitSDKModule: NSObject {
                               campaignId: campaignId,
                               experienceId: experienceId,
                               onSuccess: { result in
-                                resolver( result )
+                                resolver( result.asDictionary )
                               }, onError: { error in
                                 rejecter("Error", "QubitSDKModule: getPlacement failed.", error)
                               })
