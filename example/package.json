@@ -10,7 +10,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@react-native-community/async-storage": "^1.6.3",
     "qubit-sdk-react-native": "file:..",
     "react": "18.1.0",
     "react-native": "0.70.6"
