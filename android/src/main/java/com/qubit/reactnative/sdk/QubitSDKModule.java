@@ -164,12 +164,17 @@ public class QubitSDKModule extends ReactContextBaseJavaModule {
         getAttributesJson(attributes),
         new PlacementPreviewOptions(campaignId, experienceId),
         placement -> {
-          JsonObject placementJson = new JsonObject();
-          placementJson.add("content", placement.getContent());
-          placementJson.addProperty("impressionUrl", placement.getImpressionUrl());
-          placementJson.addProperty("clickthroughUrl", placement.getClickthroughUrl());
-          placementPromise.resolve(WritableMapConverter.convertJsonToMap(placementJson));
-          return null;
+          if (placement != null) {
+            JsonObject placementJson = new JsonObject();
+            placementJson.add("content", placement.getContent());
+            placementJson.addProperty("impressionUrl", placement.getImpressionUrl());
+            placementJson.addProperty("clickthroughUrl", placement.getClickthroughUrl());
+            placementPromise.resolve(WritableMapConverter.convertJsonToMap(placementJson));
+            return null;
+          } else {
+             placementPromise.resolve(WritableMapConverter.convertJsonToMap(new JsonObject()));
+             return null;
+          }
         },
         throwable -> {
           placementPromise.reject(throwable);
