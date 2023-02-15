@@ -6,12 +6,12 @@ Installation of the QubitSDK, to provide event tracking and lookup. To make use 
 
 ### Releases
 
-We offer two tracks for the React Native SDK. Upgrade to v2 to take advantage of Merchandising Hub personalisation with placements. 
+We currently offer two tracks for the React Native SDK. Upgrade to v2 to take advantage of Merchandising Hub personalisation with placements. 
 
 | VERSION | NOTES |
 |---|---|
-| 2.0.1 | Latest release on v2 track, for Merchandising Hub. Added `getPlacement()` method.
-| 1.0.9 | Latest release on v1 track, for experimentation hub.
+| 2.0.1 | Latest release on v2 track, for Merchandising Hub. Added `getPlacement()` method. Upgraded iOS & Android dependencies.
+| 1.0.9 | Latest release on v1 track, for Experimentation Hub.
 
 
 ### Installation
