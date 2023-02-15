@@ -4,6 +4,16 @@ Installation of the QubitSDK, to provide event tracking and lookup. To make use 
 
 ## Getting started
 
+### Releases
+
+We offer two tracks for the React Native SDK. Upgrade to v2 to take advantage of Merchandising Hub personalisation with placements. 
+
+| VERSION | NOTES |
+|---|---|
+| 2.0.1 | Latest release on v2 track, for Merchandising Hub. Added `getPlacement()` method.
+| 1.0.9 | Latest release on v1 track, for experimentation hub.
+
+
 ### Installation
 
 1.  `$ npm install qubit-sdk-react-native --save`
@@ -233,25 +243,41 @@ Returns Placement for given parameters.
 
 ```javascript
 async () => {
- const placement = await getPlacement(
-     "placement_id",
- 	"LIVE",
- 	"{ \"color\": \"blue\"}",
- 	"campaign_id",
- 	"experience_id"
- );
- ...
- placement.impression();
- ...
- placement.clickthrough();
-}
 
-{
-  "content": { ... }
+    const placementId = "8271-4cb1-a7bd-4201f70f5904"
+    const attributes = JSON.stringify({
+      "user": {
+        "id": "chg4bg7vdqo-0jzl7bqtq-idhpjmy"
+      }
+    })
+
+    const placement = await getPlacement(
+        placementId,                // placementId
+        "LIVE",                     // mode
+        attributes,                 // query attributes, as JSON string
+        "campaign_id",              // force campaignId, during development
+        "experience_id"             // force experienceId, during development
+    )
+
+    // fetch content for rendering
+    const content = placement.content
+
+    // trigger an impression
+    placement.impression()
+    
+    // trigger a clickthrough
+    placement.clickthrough()
+
 }
 ```
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Placement>** Promise with an object describing Placement object.
+
+```javascript
+{
+  "content": { ... }
+}
+```
 
 ### Compatibility
 
