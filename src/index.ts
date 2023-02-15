@@ -16,8 +16,14 @@ type Experience = {
     isControl: boolean,
     id: number,
     callback: string,
-    variation: number
+    variation: number,
     shown: () => void
+}
+
+type Placement = {
+    content: object,
+    impression: () => void,
+    clickthrough: () => void
 }
 
 class QubitSDK {
@@ -183,7 +189,59 @@ class QubitSDK {
             !(ignoreSegments == null),
             ignoreSegments || false
         )
-            .then(experiences => experiences.map(e => ({...e, shown: () => { NativeModules.QubitSDK.experienceShown(e.callback || '')} })))
+            .then(experiences => experiences.map(e => ({
+                ...e, 
+                shown: () => { NativeModules.QubitSDK.experienceShown(e.callback || '') } 
+            })))
+    }
+
+    /**
+     * Returns Placement for given parameters.
+     * @param {string} placementId Unique ID of the placement.
+     * @param {string} [mode] The mode to fetch placements content with, can be one of LIVE/SAMPLE/PREVIEW. Defaults to LIVE.
+     * @param {string} [attributes] JSON string containing custom attributes to be used to query for the placement. "visitor" attribute will be ignored as it is set by SDK.
+     * @param {string} [campaignId] Optional.
+     * @param {string} [experienceId] Optional.
+     * @returns {Promise<Placement>} Promise with an object describing Placement object.
+     * @example
+     *
+     * async () => {
+     *  const placement = await getPlacement(
+     *      "placement_id",
+     *  	"LIVE",
+     *  	"{ \"color\": \"blue\"}",
+     *  	"campaign_id",
+     *  	"experience_id"
+     *  );
+     *  ...
+     *  placement.impression();
+     *  ...
+     *  placement.clickthrough();
+     * }
+     *
+     * {
+     *   "content": { ... }
+     * }
+     */
+    public getPlacement(
+        placementId: string,
+        mode?: string,
+        attributes?: string,
+        campaignId?: string,
+        experienceId?: string
+    ) : Promise<Placement> {
+        return NativeModules.QubitSDK.getPlacement(
+            placementId,
+            mode,
+            attributes,
+            campaignId,
+            experienceId
+        )
+             .then(placement => ({
+                content: placement.content,
+                impression: () => { NativeModules.QubitSDK.placementImpression(placement.impressionUrl || '') },
+                clickthrough: () => { NativeModules.QubitSDK.placementClickthrough(placement.clickthroughUrl || '') }
+            }))
     }
 }
 

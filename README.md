@@ -4,13 +4,23 @@ Installation of the QubitSDK, to provide event tracking and lookup. To make use 
 
 ## Getting started
 
+### Releases
+
+We currently offer two tracks for the React Native SDK. Upgrade to v2 to take advantage of Merchandising Hub personalisation with placements. 
+
+| VERSION | NOTES |
+|---|---|
+| 2.0.1 | Latest release on v2 track, for Merchandising Hub. Added `getPlacement()` method. Upgraded iOS & Android dependencies.
+| 1.0.9 | Latest release on v1 track, for Experimentation Hub.
+
+
 ### Installation
 
-1. `$ npm install qubit-sdk-react-native --save`
-or
-`$ yarn add qubit-sdk-react-native`
+1.  `$ npm install qubit-sdk-react-native --save`
+    or
+    `$ yarn add qubit-sdk-react-native`
 
-2. Navigate to your `/ios` directory and run `pod install` to ensure the `QubitSDK` CocoaPod is installed. Android should require no further installation.
+2.  Navigate to your `/ios` directory and run `pod install` to ensure the `QubitSDK` CocoaPod is installed. Android should require no further installation.
 
 Optional - if you are using React Native &lt; 0.60, you must `link` the library.
 
@@ -54,6 +64,9 @@ and send first event
 -   [getExperiences](#getexperiences)
     -   [Parameters](#parameters-3)
     -   [Examples](#examples-6)
+-   [getPlacement](#getplacement)
+    -   [Parameters](#parameters-4)
+    -   [Examples](#examples-7)
 
 #### start
 
@@ -213,6 +226,58 @@ async () => {
 ```
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Experience>>** Promise with an array of Experience objects.
+
+#### getPlacement
+
+Returns Placement for given parameters.
+
+##### Parameters
+
+-   `placementId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Unique ID of the placement.
+-   `mode` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** The mode to fetch placements content with, can be one of LIVE/SAMPLE/PREVIEW. Defaults to LIVE.
+-   `attributes` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** JSON string containing custom attributes to be used to query for the placement. "visitor" attribute will be ignored as it is set by SDK.
+-   `campaignId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Optional.
+-   `experienceId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Optional.
+
+##### Examples
+
+```javascript
+async () => {
+
+    const placementId = "8271-4cb1-a7bd-4201f70f5904"
+    const attributes = JSON.stringify({
+      "user": {
+        "id": "chg4bg7vdqo-0jzl7bqtq-idhpjmy"
+      }
+    })
+
+    const placement = await getPlacement(
+        placementId,                // placementId
+        "LIVE",                     // mode
+        attributes,                 // query attributes, as JSON string
+        "campaign_id",              // force campaignId, during development
+        "experience_id"             // force experienceId, during development
+    )
+
+    // fetch content for rendering
+    const content = placement.content
+
+    // trigger an impression
+    placement.impression()
+    
+    // trigger a clickthrough
+    placement.clickthrough()
+
+}
+```
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Placement>** Promise with an object describing Placement object.
+
+```javascript
+{
+  "content": { ... }
+}
+```
 
 ### Compatibility
 

@@ -28,6 +28,9 @@ native modules for both platforms: Android and iOS.
 - getLookupData
 - getExperiences
 - experienceShown
+- getPlacement
+- placementImpression
+- placementClickthrough
 
 -------------------------------------------------------
 ## **init(trackingId, logLevel)**
@@ -293,3 +296,109 @@ None
 
 ### Example
     QubitSDK.experienceShown("https://sse.qubit.com/v1/callback?data=igK....n0=");
+
+-------------------------------------------------------
+
+## **getPlacement**(placementId, mode, attributes, campaignId, experienceId, placementPromise)
+
+### Description
+Returns Placement for given parameters.
+
+### Parameters
+- placementId
+    - Type: String
+    - Constraints: Not null
+    - Description: Unique ID of the placement.
+- mode
+    - Type: String
+    - Constraints: Can be one of LIVE/SAMPLE/PREVIEW. 
+    - Description: The mode to fetch placements content with. Defaults to LIVE.
+- attributes
+    - Type: String
+    - Constraints: Should be string description of JSON or null
+    - Description: JSON string containing custom attributes to be used to query for the placement. "visitor" attribute will be ignored as it is set by SDK.
+- campaignId
+    - Type: String
+    - Constraints: Nullable
+    - Description: Campaign identifier
+- experienceId
+    - Type: String
+    - Constraints: Nullable
+    - Description: Experience identifier
+
+### Result
+Promise with a map describing Placement object:
+    
+     {
+        "content": { ... }
+        "impressionUrl": "https://api.qubit.com/placements/callback?data=ggW4eyJtZXRhIjp7ImlkIjo",
+        "clickthroughUrl": "https://api.qubit.com/placements/callback?data=mQW4eyJtZXRhIjp7Imlkx"
+     }
+The structure of response content depends on the type of placement that is being called.
+
+### Exceptions
+- Exception is thrown, when SDK is not initialized.
+
+### Example
+    async () => {
+      const placement = await QubitSDK.getPlacement(
+	 	  "placement_id",
+	 	  "LIVE",
+	 	  "{ \"color\": \"blue\"}",
+	 	  "campaign_id",
+	 	  "experience_id"
+	   );
+	   ...
+	}
+	
+-------------------------------------------------------
+
+## placementImpression(callbackUrl)
+
+### Description
+Sends request to URL described by placement impression callback.
+
+### Parameters
+- callbackUrl
+    - Type: String
+    - Constraints: Not null
+    - Description: Impression callback URL.
+
+
+### Result
+None
+
+### Example
+	async () => {
+	  const placement = await QubitSDK.placementImpression(
+	    "https://some.url.com"
+	  );
+	  ...
+    }
+
+-------------------------------------------------------
+
+## placementClickthrough(callbackUrl)
+
+### Description
+Sends request to URL described by placement clickthrough callback.
+
+### Parameters
+- callbackUrl
+    - Type: String
+    - Constraints: Not null
+    - Description: Clickthrough callback URL.
+
+
+### Result
+None
+
+### Example
+	async () => {
+	  const placement = await QubitSDK.placementClickthrough(
+	    "https://some.url.com"
+	  );
+	  ...
+	}
+
+

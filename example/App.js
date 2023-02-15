@@ -42,48 +42,96 @@ class App extends PureComponent {
     exp.forEach(e => console.log(e));
   };
 
+  getPlacement = async () => {
+    const placement = await QubitSDK.getPlacement(
+        "tsOujouCSSKJGSCMUsmQRw",
+        "LIVE",
+        null,
+        "1ybrhki9RvKWpA-9veLQSg",
+        null
+    );
+    console.log(placement);
+  };
+
+  sendPlacementImpression = async () => {
+    const placement = await QubitSDK.getPlacement(
+        "tsOujouCSSKJGSCMUsmQRw",
+        "LIVE",
+        null,
+        "1ybrhki9RvKWpA-9veLQSg",
+        null
+    );
+    placement.impression();
+  };
+
+  sendPlacementClickthrough = async () => {
+    const placement = await QubitSDK.getPlacement(
+        "tsOujouCSSKJGSCMUsmQRw",
+        "LIVE",
+        null,
+        "1ybrhki9RvKWpA-9veLQSg",
+        null
+    );
+    placement.clickthrough();
+  };
+
   render() {
     return (
-      <>
-        <StatusBar barStyle="dark-content" />
-        <SafeAreaView>
-          <TouchableOpacity onPress={this.sendEvent}>
-            <Text>
-              Send event
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.enableTracker(true)}>
-            <Text>
-              Enable tracker
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.enableTracker(false)}>
-            <Text>
-              Disable tracker
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.getTrackerId}>
-            <Text>
-              Get tracker id
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.getDeviceId}>
-            <Text>
-              Get device id
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.getLookupData}>
-            <Text>
-              Get lookup data
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.getExperiences}>
-            <Text>
-              Get experiences
-            </Text>
-          </TouchableOpacity>
-        </SafeAreaView>
-      </>
+        <>
+          <StatusBar barStyle="dark-content" />
+          <SafeAreaView>
+            <TouchableOpacity onPress={this.sendEvent}>
+              <Text>
+                Send event
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.enableTracker(true)}>
+              <Text>
+                Enable tracker
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.enableTracker(false)}>
+              <Text>
+                Disable tracker
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.getTrackerId}>
+              <Text>
+                Get tracker id
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.getDeviceId}>
+              <Text>
+                Get device id
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.getLookupData}>
+              <Text>
+                Get lookup data
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.getExperiences}>
+              <Text>
+                Get experiences
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.getPlacement}>
+              <Text>
+                Get placement
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.sendPlacementImpression}>
+              <Text>
+                Send placement impression callback
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.sendPlacementClickthrough}>
+              <Text>
+                Send placement clickthrough callback
+              </Text>
+            </TouchableOpacity>
+          </SafeAreaView>
+        </>
     )
   }
 }
