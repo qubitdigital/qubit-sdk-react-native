@@ -11,8 +11,7 @@ Pod::Spec.new do |s|
                    DESC
   s.homepage     = "https://github.com/qubitdigital/qubit-sdk-react-native"
   s.license      = "MIT"
-  # s.license    = { :type => "MIT", :file => "FILE_LICENSE" }
-  s.authors      = { "Your Name" => "info@qubit.com" }
+  s.authors      = { "Qubit" => "info@qubit.com" }
   s.platforms    = { :ios => "9.0", :tvos => "10.0" }
   s.source       = { :git => "git@github.com:qubitdigital/qubit-sdk-react-native.git", :tag => "#{s.version}" }
 
