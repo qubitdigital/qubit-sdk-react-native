@@ -1,6 +1,6 @@
 {
   "name": "qubit-sdk-react-native",
-  "version": "2.0.1-rc1",
+  "version": "2.0.2-rc1",
   "description": "React Native bridge for using native Qubit SDK libraries on iOS and Android",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
