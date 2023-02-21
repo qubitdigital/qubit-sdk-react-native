@@ -1,3 +1,7 @@
 .git
 *.tgz
 /example
+.yarn
+.yarnrc.yml
+.gitattributes
+package
