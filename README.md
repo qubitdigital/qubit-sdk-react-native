@@ -164,6 +164,9 @@ NSString *newDeviceID = @"YourNewDeviceID";
 let newDeviceID = "yourNewDeviceID"
 QubitSDK.restartWithCustomDeviceID(id: newDeviceID)
 ```
+
+**Java**
+
 ```java
 QubitSDK.restartWithCustomDeviceId("yourNewDeviceID")
 ```
