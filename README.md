@@ -148,6 +148,26 @@ async () => {
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** Promise with String deviceId.
 
+You can set a new `deviceId` by calling the native method `restartWithCustomDeviceID`.
+The restart clears all the caches and resends startup events.
+
+**Objective-C**
+
+```objective-c
+NSString *newDeviceID = @"YourNewDeviceID";
+[QubitSDK restartWithCustomDeviceID:newDeviceID];
+```
+
+**Swift**
+
+```swift
+let newDeviceID = "yourNewDeviceID"
+QubitSDK.restartWithCustomDeviceID(id: newDeviceID)
+```
+```java
+QubitSDK.restartWithCustomDeviceId("yourNewDeviceID")
+```
+
 #### getLookupData
 
 Returns current Lookup Data. Debug purposes.
